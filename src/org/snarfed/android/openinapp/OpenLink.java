@@ -26,7 +26,7 @@ public class OpenLink extends Activity {
 
   private static class Transform {
     Transform(String pattern, String replace) {
-      this.pattern = Pattern.compile(pattern);
+      this.pattern = Pattern.compile("/" + pattern + "/?");
       this.replace = replace;
     }
 
@@ -36,9 +36,10 @@ public class OpenLink extends Activity {
 
   private static final Transform transforms[] = {
     // Facebook (from http://stackoverflow.com/a/6638342/186123 )
-    new Transform("/([^/]+)", "/profile/$1"),
-    new Transform("/pages/([^/]+)/([^/]+)", "/page/$2"),
-    new Transform("/(.+)/posts/(.+)", "/post/$1_$2?owner=$1"),
+    new Transform("([^/]+)", "/profile/$1"),
+    new Transform("pages/([^/]+)/([^/]+)", "/page/$2"),
+    new Transform("[^/]/posts/[^/]", "/post/$1_$2?owner=$1"),
+    new Transform("groups/([^/]+)", "/group/$1"),
   };
 
   /** Called when the activity is first created. */
