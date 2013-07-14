@@ -15,6 +15,9 @@
               <data android:scheme="https" />
               <data android:host="facebook.com" />
               <data android:host="www.facebook.com" />
+              <!-- <data android:host="twitter.com" /> -->
+              <!-- <data android:host="www.twitter.com" /> -->
+              <!-- <data android:host="mobile.twitter.com" /> -->
             </intent-filter>
         </activity>
     </application>
