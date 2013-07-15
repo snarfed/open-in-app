@@ -3,7 +3,7 @@
       package="org.snarfed.android.openinapp"
       android:versionCode="1"
       android:versionName="1.0">
-    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
+    <application android:label="@string/app_name" android:icon="@drawable/u_turn">
         <activity android:name="OpenLink"
                   android:label="@string/app_name">
             <!-- From http://stackoverflow.com/questions/6179776 -->
