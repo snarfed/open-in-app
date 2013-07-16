@@ -3,47 +3,51 @@
       package="org.snarfed.android.openinapp"
       android:versionCode="2"
       android:versionName="1.0.1">
-    <application android:label="@string/app_name" android:icon="@drawable/u_turn">
 
-        <activity android:name="Facebook">
-            <!-- From http://stackoverflow.com/questions/6179776 -->
-            <intent-filter>
-              <action android:name="android.intent.action.VIEW" />
-              <category android:name="android.intent.category.DEFAULT" />
-              <category android:name="android.intent.category.BROWSABLE" />
-              <data android:scheme="http" />
-              <data android:scheme="https" />
-              <data android:host="facebook.com" />
-              <data android:host="www.facebook.com" />
-            </intent-filter>
-        </activity>
+  <uses-sdk android:minSdkVersion="4"
+            android:targetSdkVersion="17" />
 
-        <activity android:name="MobileTwitter">
-            <intent-filter>
-              <action android:name="android.intent.action.VIEW" />
-              <category android:name="android.intent.category.DEFAULT" />
-              <category android:name="android.intent.category.BROWSABLE" />
-              <data android:scheme="http" />
-              <data android:scheme="https" />
-              <data android:host="mobile.twitter.com" />
-            </intent-filter>
-        </activity>
+  <application android:label="@string/app_name" android:icon="@drawable/u_turn">
 
-        <!-- The official Twitter app handles these, but it redirects them to
-             the browser. It doesn't have native intents for handling
-             retweeting, favorites, etc. anyway. :/ -->
-        <!-- <activity android:name="TwitterWebIntent"> -->
-        <!--     <intent-filter> -->
-        <!--       <action android:name="android.intent.action.VIEW" /> -->
-        <!--       <category android:name="android.intent.category.DEFAULT" /> -->
-        <!--       <category android:name="android.intent.category.BROWSABLE" /> -->
-        <!--       <data android:scheme="http" /> -->
-        <!--       <data android:scheme="https" /> -->
-        <!--       <data android:host="twitter.com" /> -->
-        <!--       <data android:host="www.twitter.com" /> -->
-        <!--       <data android:pathPattern="/intent/.*" /> -->
-        <!--     </intent-filter> -->
-        <!-- </activity> -->
+    <activity android:name="Facebook">
+      <!-- From http://stackoverflow.com/questions/6179776 -->
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="http" />
+        <data android:scheme="https" />
+        <data android:host="facebook.com" />
+        <data android:host="www.facebook.com" />
+      </intent-filter>
+    </activity>
 
-    </application>
+    <activity android:name="MobileTwitter">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="http" />
+        <data android:scheme="https" />
+        <data android:host="mobile.twitter.com" />
+      </intent-filter>
+    </activity>
+
+    <!-- The official Twitter app handles these, but it redirects them to
+         the browser. It doesn't have native intents for handling
+         retweeting, favorites, etc. anyway. :/ -->
+    <!-- <activity android:name="TwitterWebIntent"> -->
+    <!--     <intent-filter> -->
+    <!--       <action android:name="android.intent.action.VIEW" /> -->
+    <!--       <category android:name="android.intent.category.DEFAULT" /> -->
+    <!--       <category android:name="android.intent.category.BROWSABLE" /> -->
+    <!--       <data android:scheme="http" /> -->
+    <!--       <data android:scheme="https" /> -->
+    <!--       <data android:host="twitter.com" /> -->
+    <!--       <data android:host="www.twitter.com" /> -->
+    <!--       <data android:pathPattern="/intent/.*" /> -->
+    <!--     </intent-filter> -->
+    <!-- </activity> -->
+
+  </application>
 </manifest>
