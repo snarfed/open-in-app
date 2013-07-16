@@ -29,18 +29,21 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="TwitterWebIntent">
-            <intent-filter>
-              <action android:name="android.intent.action.VIEW" />
-              <category android:name="android.intent.category.DEFAULT" />
-              <category android:name="android.intent.category.BROWSABLE" />
-              <data android:scheme="http" />
-              <data android:scheme="https" />
-              <data android:host="twitter.com" />
-              <data android:host="www.twitter.com" />
-              <data android:pathPattern="/intent/.*" />
-            </intent-filter>
-        </activity>
+        <!-- The official Twitter app handles these, but it redirects them to
+             the browser. It doesn't have native intents for handling
+             retweeting, favorites, etc. anyway. :/ -->
+        <!-- <activity android:name="TwitterWebIntent"> -->
+        <!--     <intent-filter> -->
+        <!--       <action android:name="android.intent.action.VIEW" /> -->
+        <!--       <category android:name="android.intent.category.DEFAULT" /> -->
+        <!--       <category android:name="android.intent.category.BROWSABLE" /> -->
+        <!--       <data android:scheme="http" /> -->
+        <!--       <data android:scheme="https" /> -->
+        <!--       <data android:host="twitter.com" /> -->
+        <!--       <data android:host="www.twitter.com" /> -->
+        <!--       <data android:pathPattern="/intent/.*" /> -->
+        <!--     </intent-filter> -->
+        <!-- </activity> -->
 
     </application>
 </manifest>
