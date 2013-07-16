@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.net.Uri;
 import android.util.Log;
+import android.widget.Toast;
 
 // Test command line: adb -d shell am start -d [link]
 
@@ -30,7 +31,7 @@ public class Facebook extends Activity {
       // http://stackoverflow.com/a/6638342/186123
 
       // http://facebook.com/212038
-      new Transform("([^/0-9]+)", "profile/$1"),
+      new Transform("([0-9]+)", "profile/$1"),
 
       // https://www.facebook.com/pages/mockfb/225279024204684
       new Transform("pages/([^/.?]+)/([^/.?]+)", "page/$2"),
@@ -71,7 +72,8 @@ public class Facebook extends Activity {
     }
 
     if (!matched) {
-      Log.w(TAG, "No match for " + uri + ", opening Facebook app home screen.");
+      Toast.makeText(this, "Sorry, Open Link in App didn't understand this Facebook link.",
+                     Toast.LENGTH_SHORT).show();
       intent.setData(Uri.parse("fb://root"));
     }
 
