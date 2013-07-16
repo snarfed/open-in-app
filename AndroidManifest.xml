@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.snarfed.android.openinapp"
-      android:versionCode="2"
-      android:versionName="1.0.1">
+      android:versionCode="3"
+      android:versionName="1.0.2">
 
   <uses-sdk android:minSdkVersion="4"
             android:targetSdkVersion="17" />
@@ -19,6 +19,13 @@
         <data android:scheme="https" />
         <data android:host="facebook.com" />
         <data android:host="www.facebook.com" />
+        <!-- These would be nice for limiting to just the paths we handle, but
+             pathPattern only has weak glob style matching, so i can't exclude
+             slashes from matching profile/page paths like facebook.com/212038. -->
+        <!-- <data android:pathPattern="/*" /> -->
+        <!-- <data android:pathPrefix="/pages/" /> -->
+        <!-- <data android:pathPattern="/*/posts/*" /> -->
+        <!-- <data android:pathPrefix="/groups/" /> -->
       </intent-filter>
     </activity>
 
@@ -45,7 +52,7 @@
     <!--       <data android:scheme="https" /> -->
     <!--       <data android:host="twitter.com" /> -->
     <!--       <data android:host="www.twitter.com" /> -->
-    <!--       <data android:pathPattern="/intent/.*" /> -->
+    <!--       <data android:pathPrefix="/intent/" /> -->
     <!--     </intent-filter> -->
     <!-- </activity> -->
 

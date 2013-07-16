@@ -11,8 +11,8 @@ import android.util.Log;
 
 // Test command line: adb -d shell am start -d [link]
 
-// TODO: handle profile/page usernames, e.g. http://facebook.com/snarfed.org .
-// The naive link like fb://profile/snarfed.org doesn't work.
+// TODO: handle usernames, e.g. http://facebook.com/snarfed.org . The naive link
+// like fb://profile/snarfed.org doesn't work.
 public class Facebook extends Activity {
   private static final String TAG = "Facebook";
 
@@ -71,7 +71,8 @@ public class Facebook extends Activity {
     }
 
     if (!matched) {
-      Log.w(TAG, "No match for " + uri + ", resending original intent.");
+      Log.w(TAG, "No match for " + uri + ", opening Facebook app home screen.");
+      intent.setData(Uri.parse("fb://root"));
     }
 
     startActivity(intent);
