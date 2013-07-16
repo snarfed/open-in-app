@@ -27,7 +27,6 @@ public class MobileTwitter extends Activity {
     }
 
     // http://omgwtfgames.com/2012/01/android-intents-captured-by-various-twitter-clients/
-
     Uri newUri = Uri.parse("https://twitter.com" + uri.getPath());
     Log.i(TAG, "Redirecting " + uri + " to " + newUri);
     Intent intent = new Intent(Intent.ACTION_VIEW, newUri);
