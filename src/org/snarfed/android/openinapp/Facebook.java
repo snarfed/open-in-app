@@ -30,13 +30,13 @@ public class Facebook extends Activity {
       // http://stackoverflow.com/a/6638342/186123
 
       // http://facebook.com/212038
-      new Transform("([^/.?]+)", "profile/$1"),
+      new Transform("([^/0-9]+)", "profile/$1"),
 
       // https://www.facebook.com/pages/mockfb/225279024204684
       new Transform("pages/([^/.?]+)/([^/.?]+)", "page/$2"),
 
       // http://facebook.com/504988744/posts/10151785603608745
-      new Transform("[^/.?]/posts/[^/.?]", "post/$1_$2?owner=$1"),
+      new Transform("([^/.?]+)/posts/([^/.?]+)", "post/$1_$2?owner=$1"),
 
       // https://www.facebook.com/groups/257050967664385/
       new Transform("groups/([^/.?]+)", "group/$1"),
@@ -71,7 +71,7 @@ public class Facebook extends Activity {
     }
 
     if (!matched) {
-      Log.w(TAG, "No match for" + uri + ", resending original intent.");
+      Log.w(TAG, "No match for " + uri + ", resending original intent.");
     }
 
     startActivity(intent);
