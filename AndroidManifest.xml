@@ -4,8 +4,8 @@
       android:versionCode="1"
       android:versionName="1.0">
     <application android:label="@string/app_name" android:icon="@drawable/u_turn">
-        <activity android:name="OpenLink"
-                  android:label="@string/app_name">
+
+        <activity android:name="Facebook">
             <!-- From http://stackoverflow.com/questions/6179776 -->
             <intent-filter>
               <action android:name="android.intent.action.VIEW" />
@@ -15,10 +15,32 @@
               <data android:scheme="https" />
               <data android:host="facebook.com" />
               <data android:host="www.facebook.com" />
-              <!-- <data android:host="twitter.com" /> -->
-              <!-- <data android:host="www.twitter.com" /> -->
-              <!-- <data android:host="mobile.twitter.com" /> -->
             </intent-filter>
         </activity>
+
+        <activity android:name="MobileTwitter">
+            <intent-filter>
+              <action android:name="android.intent.action.VIEW" />
+              <category android:name="android.intent.category.DEFAULT" />
+              <category android:name="android.intent.category.BROWSABLE" />
+              <data android:scheme="http" />
+              <data android:scheme="https" />
+              <data android:host="mobile.twitter.com" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="TwitterWebIntent">
+            <intent-filter>
+              <action android:name="android.intent.action.VIEW" />
+              <category android:name="android.intent.category.DEFAULT" />
+              <category android:name="android.intent.category.BROWSABLE" />
+              <data android:scheme="http" />
+              <data android:scheme="https" />
+              <data android:host="twitter.com" />
+              <data android:host="www.twitter.com" />
+              <data android:pathPattern="/intent/.*" />
+            </intent-filter>
+        </activity>
+
     </application>
 </manifest>
