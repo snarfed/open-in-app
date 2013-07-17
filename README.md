@@ -18,5 +18,11 @@ App from the chooser dialog box. If you don't see the dialog box on a link that
 you think should work, go to Settings => Apps => Browser or Chrome => Clear
 defaults.
 
+Known issue: clicking on a link in Chrome does *not* trigger this app, due to
+[this Chrome bug](https://code.google.com/p/chromium/issues/detail?id=235060).
+I've
+[asked for a workaround](http://stackoverflow.com/questions/17706667/workaround-for-chrome-on-android-not-firing-intent-when-links-are-clicked),
+and I'll use whatever I find, but I'm not holding my breath.
+
 I'll add more apps and link types as I come across them. Feel free to ask for
 any specific ones you want. Enjoy!
