@@ -9,7 +9,7 @@
 
   <application android:label="@string/app_name" android:icon="@drawable/u_turn">
 
-    <activity android:name="Facebook">
+    <activity android:name="Facebook" android:exported="true">
       <!-- From http://stackoverflow.com/questions/6179776 -->
       <intent-filter>
         <action android:name="android.intent.action.VIEW" />
@@ -29,7 +29,7 @@
       </intent-filter>
     </activity>
 
-    <activity android:name="MobileTwitter">
+    <activity android:name="MobileTwitter" android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
@@ -43,7 +43,7 @@
     <!-- The official Twitter app handles these, but it redirects them to
          the browser. It doesn't have native intents for handling
          retweeting, favorites, etc. anyway. :/ -->
-    <!-- <activity android:name="TwitterWebIntent"> -->
+    <!-- <activity android:name="TwitterWebIntent" android:exported="true"> -->
     <!--     <intent-filter> -->
     <!--       <action android:name="android.intent.action.VIEW" /> -->
     <!--       <category android:name="android.intent.category.DEFAULT" /> -->
