@@ -49,7 +49,8 @@ public class MobileTwitter extends Activity {
       // I could limit package to com.android... or com.google... but didn't
       // want to ignore a user's different default browser.
       //
-      // So, I create the chooser manually and remove this app. Code based on
+      // So, I create the chooser manually and remove this app and the Twitter
+      // app (which redirects to mobile.twitter.com). Code based on
       // http://hkdevtips.blogspot.com/2013/02/customize-your-actionchooser-intent.html
       Toast.makeText(this,
                      "Sorry, Open Link in App didn't understand this Twitter link.",
@@ -58,9 +59,8 @@ public class MobileTwitter extends Activity {
       List<Intent> apps = new ArrayList<Intent>();
       for (ResolveInfo info : getPackageManager().queryIntentActivities(intent, 0)) {
         String pkg = info.activityInfo.packageName;
-        Log.i(TAG, "This is " + getClass().getPackage());
-        if (!pkg.equals(getClass().getPackage())) {
-          Log.i(TAG, "Including package " + pkg);
+        if (!pkg.equals(getClass().getPackage()) &&
+            !pkg.equals("com.twitter.android")) {
           apps.add(new Intent(intent).setPackage(pkg));
         }
       }
