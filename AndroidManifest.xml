@@ -10,21 +10,22 @@
   <application android:label="@string/app_name" android:icon="@drawable/u_turn">
 
     <activity android:name="Facebook" android:exported="true">
-      <!-- From http://stackoverflow.com/questions/6179776 -->
+      <!-- Details in http://stackoverflow.com/questions/6179776 -->
       <intent-filter>
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="http" />
-        <data android:scheme="https" />
-        <data android:host="facebook.com" />
-        <data android:host="www.facebook.com" />
+        <!-- To catch taps on links in Chrome, must include *both* host and
+             either pathPrefix or pathPattern.
+             http://stackoverflow.com/questions/17706667 -->
+        <data android:host="facebook.com" android:pathPrefix="/" />
+        <data android:host="www.facebook.com" android:pathPrefix="/" />
         <!-- These would be nice for limiting to just the paths we handle, but
              pathPattern only has weak glob style matching, so i can't exclude
              slashes from matching profile/page paths like facebook.com/212038. -->
-        <!-- <data android:pathPattern="/*" /> -->
+        <!-- <data android:pathPattern="/.*" /> -->
         <!-- <data android:pathPrefix="/pages/" /> -->
-        <!-- <data android:pathPattern="/*/posts/*" /> -->
+        <!-- <data android:pathPattern="/.*/posts/.*" /> -->
         <!-- <data android:pathPrefix="/groups/" /> -->
       </intent-filter>
     </activity>
@@ -33,10 +34,8 @@
       <intent-filter>
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
-        <!-- <category android:name="android.intent.category.BROWSABLE" /> -->
-        <data android:scheme="http" />
-        <data android:scheme="https" />
-        <data android:host="mobile.twitter.com" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:host="mobile.twitter.com" android:pathPrefix="/" />
       </intent-filter>
     </activity>
 
