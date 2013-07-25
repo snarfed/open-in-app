@@ -15,11 +15,12 @@
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <!-- To catch taps on links in Chrome, must include *both* host and
-             either pathPrefix or pathPattern.
+        <!-- To catch links in Chrome, must include scheme, host, and pathPrefix.
              http://stackoverflow.com/questions/17706667 -->
-        <data android:host="facebook.com" android:pathPrefix="/" />
-        <data android:host="www.facebook.com" android:pathPrefix="/" />
+        <data android:scheme="http" android:host="facebook.com" android:pathPattern="/.*" />
+        <data android:scheme="https" android:host="facebook.com" android:pathPattern="/.*" />
+        <data android:scheme="http" android:host="www.facebook.com" android:pathPattern="/.*" />
+        <data android:scheme="https" android:host="www.facebook.com" android:pathPattern="/.*" />
         <!-- These would be nice for limiting to just the paths we handle, but
              pathPattern only has weak glob style matching, so i can't exclude
              slashes from matching profile/page paths like facebook.com/212038. -->
@@ -35,7 +36,8 @@
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <data android:host="mobile.twitter.com" android:pathPrefix="/" />
+        <data android:scheme="http" android:host="mobile.twitter.com" android:pathPrefix="/" />
+        <data android:scheme="https" android:host="mobile.twitter.com" android:pathPrefix="/" />
       </intent-filter>
     </activity>
 

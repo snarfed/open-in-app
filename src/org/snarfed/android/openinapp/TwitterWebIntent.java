@@ -19,19 +19,18 @@ import android.util.Log;
 // http://twitter.com/intent/user?screen_name=alwaysmikegomez
 
 public class TwitterWebIntent extends Activity {
-  private static final String TAG = "TwitterWebIntent";
-
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     Uri uri = getIntent().getData();
     if (uri == null || uri.getPath() == null) {
-      Log.i(TAG, "No URI in intent! Exiting.");
+      Log.i(Constants.TAG, "No URI in intent! Exiting.");
       finish();
       return;
     }
 
+    // http://wiki.akosma.com/IPhone_URL_Schemes#Twitter
     // http://omgwtfgames.com/2012/01/android-intents-captured-by-various-twitter-clients/
     Intent intent = null;
     if (uri.getPath().equals("/intent/tweet")) {
@@ -62,11 +61,11 @@ public class TwitterWebIntent extends Activity {
       }
 
       intent.putExtra(Intent.EXTRA_TEXT, text);
-      Log.i(TAG, "Redirecting " + uri + " to ACTION_SEND with text/plain: " + text);
+      Log.i(Constants.TAG, "Redirecting " + uri + " to ACTION_SEND with text/plain: " + text);
 
     } else {
       intent = new Intent(getIntent());
-      Log.i(TAG, "Unknown path " + uri.getPath() + " , resending original intent.");
+      Log.i(Constants.TAG, "Unknown path " + uri.getPath() + " , resending original intent.");
     }
 
     startActivity(intent);

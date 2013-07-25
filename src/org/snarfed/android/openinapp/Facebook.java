@@ -15,8 +15,6 @@ import android.widget.Toast;
 // TODO: handle usernames, e.g. http://facebook.com/snarfed.org . The naive link
 // like fb://profile/snarfed.org doesn't work.
 public class Facebook extends Activity {
-  private static final String TAG = "Facebook";
-
   private static class Transform {
     Transform(String pattern, String replace) {
       this.pattern = Pattern.compile("/" + pattern + "/?");
@@ -29,9 +27,19 @@ public class Facebook extends Activity {
 
   static final Transform[] transforms = new Transform[] {
       // http://stackoverflow.com/a/6638342/186123
+      // http://wiki.akosma.com/IPhone_URL_Schemes#Facebook
 
       // http://facebook.com/212038
       new Transform("([0-9]+)", "profile/$1"),
+
+      // http://facebook.com/snarfed.org
+      // Looks like there's no way to handle usernames yet, other than looking
+      // up their user id.
+      // http://stackoverflow.com/questions/9281267/how-do-i-link-to-a-facebook-user-in-the-ios-app-by-using-the-username
+      // The old way of passing it in "extra_user_display_name" no longer works:
+      // http://forum.frandroid.com/topic/22299-facebooktwitter-intent/
+      //
+      // new Transform("([^/]+)", "profile/$1"),
 
       // https://www.facebook.com/pages/mockfb/225279024204684
       new Transform("pages/([^/.?]+)/([^/.?]+)", "page/$2"),
@@ -53,18 +61,18 @@ public class Facebook extends Activity {
 
     Uri uri = getIntent().getData();
     if (uri == null || uri.getPath() == null) {
-      Log.i(TAG, "No URI in intent! Exiting.");
+      Log.i(Constants.TAG, "No URI in intent! Exiting.");
       finish();
       return;
     }
 
-    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+    Intent intent = new Intent(Intent.ACTION_VIEW);
     boolean matched = false;
     for (Transform tx : transforms) {
       Matcher matcher = tx.pattern.matcher(uri.getPath());
       if (matcher.matches()) {
         Uri newUri = Uri.parse("fb://" + matcher.replaceFirst(tx.replace));
-        Log.i(TAG, "Redirecting " + uri + " to " + newUri);
+        Log.i(Constants.TAG, "Redirecting " + uri + " to " + newUri);
         intent.setData(newUri);
         matched = true;
         break;

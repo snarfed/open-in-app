@@ -20,15 +20,13 @@ import android.widget.Toast;
 // Just convert the mobile.twitter.com domain to just twitter.com. The Twitter
 // app doesn't handle mobile.twitter.com URLs for some reason.
 public class MobileTwitter extends Activity {
-  private static final String TAG = "MobileTwitter";
-
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     Uri uri = getIntent().getData();
     if (uri == null || uri.getPath() == null) {
-      Log.i(TAG, "No URI in intent! Exiting.");
+      Log.i(Constants.TAG, "No URI in intent! Exiting.");
       finish();
       return;
     }
@@ -38,7 +36,7 @@ public class MobileTwitter extends Activity {
     Intent intent = new Intent(Intent.ACTION_VIEW, newUri);
     if (Pattern.matches("/[^/]+", uri.getPath()) ||  // user
         Pattern.matches("/[^/]+/status/[^/]+", uri.getPath())) {  // tweet
-      Log.i(TAG, "Redirecting " + uri + " to " + newUri);
+      Log.i(Constants.TAG, "Redirecting " + uri + " to " + newUri);
       intent.setPackage("com.twitter.android");
     } else {
       // twitter.com URLs redirect back to mobile.twitter.com URLs on phones,
