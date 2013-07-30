@@ -57,5 +57,17 @@
     <!--     </intent-filter> -->
     <!-- </activity> -->
 
+    <activity android:name="Instagram" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="http" android:host="instagram.com" android:pathPrefix="/" />
+        <data android:scheme="https" android:host="instagram.com" android:pathPrefix="/" />
+        <data android:scheme="http" android:host="www.instagram.com" android:pathPrefix="/" />
+        <data android:scheme="https" android:host="www.instagram.com" android:pathPrefix="/" />
+      </intent-filter>
+    </activity>
+
   </application>
 </manifest>
