@@ -12,10 +12,17 @@ import android.util.Log;
 import android.widget.Toast;
 
 // Test command line: adb -d shell am start -d [link]
-// https://www.instagram.com/snarfed
 // http://instagram.com/p/byuvjTsqJo/
-
-// Insragram does have an instagram:// scheme, but evidently it's iOS only.
+// https://www.instagram.com/snarfed
+//
+// Currently the Instagram app only handles intents for opening pictures and
+// resetting your password, not opening user profiles.
+//
+// https://groups.google.com/forum/#!msg/instagram-api-developers/7XUKm9HSAdg/9SrdVmB4trQJ
+// http://stackoverflow.com/questions/15497261/open-instagram-user-profile
+// https://github.com/danthemellowman/instagram-decompiled/blob/master/AndroidManifest.xml
+//
+// Instagram does have an instagram:// scheme, but evidently it's iOS only.
 // http://instagram.com/developer/iphone-hooks/#
 public class Instagram extends Activity {
   @Override
@@ -37,10 +44,10 @@ public class Instagram extends Activity {
     }
 
     Intent intent = new Intent(Intent.ACTION_VIEW, newUri);
-    // intent.setPackage("com.instagram.android"); Recommended to prevent
-    // occasional Instagram app crashes:
+    // Recommended to prevent occasional Instagram app crashes:
     // https://groups.google.com/d/msg/instagram-api-developers/QmLGb4ImWLU/aXFlNFKfSnUJ
     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
     Log.i(Constants.TAG, "Redirecting " + uri + " to " + newUri);
     startActivity(intent);
     finish();
