@@ -26,3 +26,15 @@ and I'll use whatever I find, but I'm not holding my breath.
 
 I'll add more apps and link types as I come across them. Feel free to ask for
 any specific ones you want. Enjoy!
+
+TODO
+===
+More apps:
+GitHub
+WordPress
+OpenTable
+Netflix
+Hulu
+YouTube? or does it already handle everything right?
+Tumblr
+...others?
