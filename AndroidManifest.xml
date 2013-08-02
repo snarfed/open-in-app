@@ -62,10 +62,22 @@
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="http" android:host="instagram.com" android:pathPrefix="/" />
-        <data android:scheme="https" android:host="instagram.com" android:pathPrefix="/" />
-        <data android:scheme="http" android:host="www.instagram.com" android:pathPrefix="/" />
-        <data android:scheme="https" android:host="www.instagram.com" android:pathPrefix="/" />
+        <data android:scheme="http" android:host="instagram.com" android:pathPrefix="/p/" />
+        <data android:scheme="https" android:host="instagram.com" android:pathPrefix="/p/" />
+        <data android:scheme="http" android:host="www.instagram.com" android:pathPrefix="/p/" />
+        <data android:scheme="https" android:host="www.instagram.com" android:pathPrefix="/p/" />
+      </intent-filter>
+    </activity>
+
+    <activity android:name="GitHub" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="http" android:host="github.com" android:pathPrefix="/" />
+        <data android:scheme="https" android:host="github.com" android:pathPrefix="/" />
+        <data android:scheme="http" android:host="www.github.com" android:pathPrefix="/" />
+        <data android:scheme="https" android:host="www.github.com" android:pathPrefix="/" />
       </intent-filter>
     </activity>
 
