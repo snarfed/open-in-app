@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest android:versionCode="74" android:versionName="2.4.2" android:installLocation="auto" package="org.wordpress.android"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <supports-screens android:anyDensity="true" android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+    <permission android:name="org.wordpress.android.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    <uses-permission android:name="org.wordpress.android.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.location" android:required="false" />
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+    <uses-feature android:name="android.hardware.location.network" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+    <application android:theme="@style/WordPress" android:label="WordPress" android:icon="@drawable/app_icon" android:name="WordPress" android:allowBackup="false" android:hardwareAccelerated="true">
+        <activity android:name=".ui.accounts.AccountSetupActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.accounts.AdditionalSettingsActivity" />
+        <activity android:name=".ui.accounts.NewAccountActivity" />
+        <activity android:name=".ui.accounts.SignupActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".ui.prefs.AboutActivity" />
+        <activity android:theme="@style/Theme.Sherlock.Light" android:name=".ui.prefs.BlogPreferencesActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".ui.prefs.LicensesActivity" />
+        <activity android:theme="@style/Theme.Sherlock.Light" android:name=".ui.prefs.PreferencesActivity" android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".ui.comments.CommentsActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".ui.comments.EditCommentActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:theme="@style/WordPress.Dialog" android:name=".ui.comments.AddCommentActivity" android:windowSoftInputMode="stateVisible" />
+        <activity android:theme="@style/WordPress.Dialog" android:label="@string/add_new_category" android:name=".ui.posts.AddCategoryActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:theme="@style/WordPress.Dialog" android:label="@string/create_a_link" android:name=".ui.posts.EditLinkActivity" />
+        <activity android:name=".ui.posts.EditPostActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+                <data android:mimeType="image/*" />
+                <data android:mimeType="video/*" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.posts.PostsActivity" android:configChanges="keyboardHidden|orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.posts.PagesActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".ui.posts.PreviewPostActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".ui.posts.SelectCategoriesActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".ui.posts.ViewPostActivity" />
+        <activity android:label="QuickPress" android:name=".ui.AddQuickPressShortcutActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.DashboardActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".ui.reader.ReaderActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".ui.StatsActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".ui.ViewSiteActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".ui.notifications.NotificationsActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <service android:label="Post Upload Service" android:name=".util.PostUploadService" />
+        <service android:name="org.wordpress.android.GCMIntentService" />
+        <receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="org.wordpress.android" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

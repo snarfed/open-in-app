@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest android:versionCode="1100000100" android:versionName="1.8.4" android:installLocation="auto" package="com.silentlabs.android.mobilequeue"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher_netflix" android:name="MobileQueueApplication">
+        <activity android:theme="@style/Theme.NetflixTheme" android:label="@string/app_name" android:icon="@drawable/ic_launcher_netflix" android:name=".activity.HomeActivity" android:configChanges="keyboardHidden|orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.NetflixTheme" android:label="@string/title_register" android:name=".activity.RegisterAppActivity" android:launchMode="singleTask" />
+        <activity android:theme="@style/Theme.NetflixTheme" android:label="@string/title_browse" android:name=".activity.QueueActivity" android:configChanges="keyboardHidden|orientation" />
+        <activity android:theme="@style/Theme.NetflixTheme" android:label="@string/title_browse" android:name=".activity.BrowseActivity" android:configChanges="keyboardHidden|orientation" />
+        <activity android:theme="@*android:style/Theme.Dialog" android:label="@string/title_profile" android:name=".activity.DisplayProfileActivity" android:configChanges="keyboardHidden|orientation" />
+        <activity android:theme="@*android:style/Theme.Dialog" android:label="@string/title_add" android:name=".activity.AddTitleActivity" android:configChanges="keyboardHidden|orientation" />
+        <activity android:theme="@style/Theme.NetflixTheme" android:label="@string/title_preferences" android:name=".activity.PreferencesActivity" />
+        <activity android:theme="@style/Theme.NetflixTheme" android:label="@string/title_details" android:name=".activity.DisplayMovieDetailsActivity" android:configChanges="keyboardHidden|orientation" />
+        <activity android:theme="@style/Theme.NetflixTheme" android:label="@string/title_search" android:name=".activity.SearchActivity" android:launchMode="singleTop" android:configChanges="keyboardHidden|orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable" />
+        </activity>
+        <meta-data android:name="android.app.default_searchable" android:value=".activity.SearchActivity" />
+    </application>
+</manifest>

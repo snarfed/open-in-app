@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest android:versionCode="402488546" android:versionName="4.0.2.48854689" android:installLocation="auto" package="com.google.android.apps.plus"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <permission android:name="com.google.android.apps.plus.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    <permission android:name="com.android.gallery3d.filtershow.permission.READ" android:protectionLevel="signature" />
+    <permission android:name="com.android.gallery3d.filtershow.permission.WRITE" android:protectionLevel="signature" />
+    <permission android:label="@string/permlab_picasastore" android:name="com.google.android.apps.plus.permission.PICASA_STORE" android:protectionLevel="dangerous" android:permissionGroup="android.permission-group.PERSONAL_INFO" android:description="@string/permdesc_picasastore" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.WRITE_PROFILE" />
+    <uses-permission android:name="android.permission.READ_SOCIAL_STREAM" />
+    <uses-permission android:name="android.permission.WRITE_SOCIAL_STREAM" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.SUBSCRIBED_FEEDS_READ" />
+    <uses-permission android:name="android.permission.SUBSCRIBED_FEEDS_WRITE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.google.android.apps.plus.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="com.android.gallery3d.filtershow.permission.READ" />
+    <uses-permission android:name="com.android.gallery3d.filtershow.permission.WRITE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.gallery3d.permission.PICASA_STORE" />
+    <uses-permission android:name="com.google.android.hangouts.START_HANGOUT" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="com.google.googlenav.friend.permission.OPT_IN" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+    <uses-feature android:name="android.hardware.microphone" android:required="false" />
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+    <uses-feature android:name="android.hardware.bluetooth" android:required="false" />
+    <supports-screens android:anyDensity="true" android:normalScreens="true" android:largeScreens="true" />
+    <application android:label="@string/app_name" android:icon="@mipmap/icon" android:name="com.google.android.apps.plus.phone.EsApplication" android:logo="@mipmap/icon" android:hardwareAccelerated="true" android:largeHeap="true">
+        <uses-library android:name="com.google.android.maps" android:required="true" />
+        <provider android:label="@string/es_data" android:name=".content.EsProvider" android:exported="false" android:authorities="com.google.android.apps.plus.content.EsProvider">
+            <path-permission android:readPermission="android.permission.GLOBAL_SEARCH" android:path="/search_suggest_query" />
+            <grant-uri-permission android:pathPattern=".*" />
+        </provider>
+        <provider android:label="@string/es_data" android:name=".content.EsApiProvider" android:exported="true" android:authorities="com.google.android.apps.plus.content.ApiProvider">
+            <path-permission android:readPermission="android.permission.GET_ACCOUNTS" android:path="/account" />
+        </provider>
+        <provider android:label="@string/es_google_photo_provider" android:name="com.google.android.picasasync.PicasaContentProvider" android:exported="true" android:authorities="com.google.android.apps.plus.content.EsGooglePhotoProvider" android:syncable="true" />
+        <provider android:label="@string/es_google_iu_provider" android:name=".iu.InstantUploadProvider" android:exported="false" android:authorities="com.google.android.apps.plus.iu.EsGoogleIuProvider" android:syncable="true" />
+        <receiver android:name="com.google.android.picasasync.ConnectivityReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.conn.BACKGROUND_DATA_SETTING_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.google.android.picasasync.ConnectivityReceiver$AsyncService" />
+        <receiver android:name=".service.LocaleChangeReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".service.ConnectivityReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.conn.BACKGROUND_DATA_SETTING_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".service.LowStorageMonitor">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".iu.InstantUploadEnvironment$BatteryReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".iu.InstantUploadEnvironment$ConnectivityReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.conn.BACKGROUND_DATA_SETTING_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".service.PackagesMediaMonitor">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.PACKAGE_CHANGED" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <data android:scheme="file" />
+            </intent-filter>
+        </receiver>
+        <service android:name=".service.PackagesMediaMonitor$AsyncService" />
+        <receiver android:name=".service.CameraMonitor">
+            <intent-filter>
+                <action android:name="com.android.camera.NEW_PICTURE" />
+                <action android:name="android.hardware.action.NEW_PICTURE" />
+                <action android:name="android.hardware.action.NEW_VIDEO" />
+                <data android:mimeType="image/*" />
+                <data android:mimeType="video/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.NEW_PICTURE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".service.PicasaNetworkReceiver">
+            <intent-filter>
+                <action android:name="com.google.android.picasasync.op_report" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".service.PicasaQuotaChangedReceiver">
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.iu.QUOTA_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".service.PackageAddedReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.registerlistener" />
+            </intent-filter>
+        </receiver>
+        <provider android:name="com.google.android.picasastore.PicasaPhotoContentProvider" android:permission="com.google.android.apps.plus.permission.PICASA_STORE" android:exported="true" android:authorities="com.google.android.apps.plus.content.EsPicasaStoreProvider" />
+        <service android:name="com.google.android.picasastore.PicasaStoreFacade$DummyService">
+            <intent-filter>
+                <action android:name="com.google.android.picasastore.PACKAGE_METADATA_LOOKUP" />
+            </intent-filter>
+            <meta-data android:name="com.google.android.picasastore.priority" android:value="48" />
+            <meta-data android:name="com.google.android.picasastore.authority" android:value="com.google.android.apps.plus.content.EsPicasaStoreProvider" />
+        </service>
+        <service android:name=".service.PicasaNetworkService" />
+        <activity android:theme="@style/Theme.SignIn" android:name=".phone.AccountSelectionActivity" android:launchMode="singleTask" />
+        <activity android:theme="@style/Theme.Host" android:name=".phone.OutOfBoxActivity" android:windowSoftInputMode="stateHidden" />
+        <activity android:theme="@style/Theme.Host" android:name=".locations.LocationsMapActivity" />
+        <activity android:theme="@style/Theme.Host" android:name=".locations.FriendLocationsActivity" />
+        <activity android:theme="@style/Theme.Host" android:name=".phone.OobSelectPlusPageActivity" />
+        <activity android:theme="@style/Theme.Host" android:name=".phone.OobInstantUploadActivity" />
+        <activity android:theme="@style/Theme.Host" android:name=".phone.OobProfilePhotoActivity" />
+        <activity android:theme="@style/Theme.Host" android:name=".phone.OobContactsSyncActivity" />
+        <activity android:theme="@style/Theme.Host" android:name=".phone.ContactsSyncConfigActivity" />
+        <activity android:theme="@style/Theme.Host" android:label="@string/app_name" android:name=".phone.HomeActivity" android:taskAffinity="com.google.android.apps.plus" android:launchMode="singleTop" android:logo="@drawable/ic_menu_stream">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.INFO" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.widget.CIRCLE_ACTION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Host" android:name=".phone.HostPeopleActivity" android:logo="@drawable/ic_menu_stream" android:parentActivityName=".phone.HomeActivity" />
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:name=".phone.CircleSettingsActivity" />
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:name=".phone.SquareSettingsActivity" />
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:name=".phone.PeopleListActivity" />
+        <activity android:theme="@style/Theme.Host" android:label="@string/app_name" android:name=".phone.EventActivity" android:logo="@drawable/ic_menu_stream" android:parentActivityName=".phone.HomeActivity" />
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:name=".phone.StreamOneUpActivity" android:logo="@drawable/ic_menu_stream" android:parentActivityName=".phone.HomeActivity">
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.widget.ACTIVITY_ACTION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:name=".phone.EditCommentActivity" android:windowSoftInputMode="stateVisible" android:logo="@drawable/ic_menu_stream" />
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:name=".phone.EditPostActivity" android:windowSoftInputMode="stateVisible" android:logo="@drawable/ic_menu_stream" />
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:label="@string/event_activity_title" android:name=".phone.HostEventInviteeListActivity" android:logo="@drawable/ic_menu_events" android:parentActivityName=".phone.EventActivity" />
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:label="@string/create_event_activity_title" android:name=".phone.NewEventActivity" android:launchMode="singleTop" android:windowSoftInputMode="stateHidden|adjustResize" android:logo="@drawable/ic_menu_events" />
+        <activity android:theme="@style/Theme.Host" android:label="@string/event_picker_activity_title" android:name=".phone.HostEventThemePickerActivity" android:logo="@drawable/ic_menu_events" />
+        <activity android:theme="@style/TabletCircleBrowserTheme.Dark" android:label="@string/event_location_activity_title" android:name=".phone.EventLocationActivity" android:logo="@drawable/ic_menu_events" />
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:label="@string/edit_event_activity_title" android:name=".phone.EditEventActivity" android:launchMode="singleTop" android:windowSoftInputMode="stateHidden|adjustResize" android:logo="@drawable/ic_menu_events" />
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:name=".phone.HostEmotiShareChooserActivity" android:launchMode="singleTop" android:windowSoftInputMode="stateHidden|adjustPan" android:logo="@drawable/ic_menu_stream" android:parentActivityName=".phone.HomeActivity" />
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:name=".phone.HostPostLinkActivity" android:launchMode="singleTop" android:windowSoftInputMode="stateVisible|adjustPan" />
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:name=".phone.PostActivity" android:launchMode="singleTop" android:windowSoftInputMode="stateHidden|adjustResize" android:logo="@drawable/ic_menu_stream" />
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:name=".phone.PostTextActivity" android:launchMode="singleTop" android:windowSoftInputMode="stateVisible|adjustResize" android:logo="@drawable/ic_menu_stream" />
+        <activity android:theme="@style/SdkTheme" android:name=".phone.ShareActivity" android:launchMode="singleTop" android:windowSoftInputMode="stateHidden|adjustResize" android:logo="@mipmap/icon" />
+        <activity android:theme="@style/SdkTheme" android:name=".phone.SignOnActivity" android:launchMode="singleTop" android:logo="@drawable/ic_actionbar_gplus">
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.GOOGLE_BIRTHDAY_POST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.SHARE_GOOGLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.SHARE_GOOGLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.SHARE_GOOGLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.circles.platform.intent.action.PLUS1" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.action.PLUSONE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.GOOGLE_PLUS_SHARE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/vnd.google.panorama360+jpg" />
+                <data android:mimeType="image/*" />
+                <data android:mimeType="video/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/vnd.google.panorama360+jpg" />
+                <data android:mimeType="image/*" />
+                <data android:mimeType="video/*" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:name=".phone.ReshareActivity" android:launchMode="singleTop" android:logo="@drawable/ic_menu_stream" />
+        <activity android:theme="@style/TabletCircleBrowserTheme.Dark" android:name=".phone.LocationPickerActivity" android:parentActivityName=".phone.HomeActivity" />
+        <activity android:theme="@style/Theme.Host" android:label="@string/relateds_stream_activity" android:name=".phone.RelatedsStreamActivity" android:parentActivityName=".phone.HomeActivity" />
+        <activity android:theme="@style/Theme.Host.SearchBar" android:label="@string/search_activity_label" android:name=".phone.PostSearchActivity" android:windowSoftInputMode="stateVisible|adjustResize" android:parentActivityName=".phone.HomeActivity" />
+        <activity android:theme="@style/Theme.Host.SearchBar" android:label="@string/search_activity_label" android:name=".phone.PhotoTileSearchActivity" android:windowSoftInputMode="stateVisible|adjustResize" android:parentActivityName=".phone.HomeActivity" />
+        <activity android:theme="@style/Theme.Host" android:label="@string/home_screen_profile_label" android:name=".phone.OneProfileActivity" android:logo="@drawable/ic_menu_profile" android:parentActivityName=".phone.HomeActivity" />
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:name=".phone.ProfileEditActivity" android:windowSoftInputMode="adjustResize" />
+        <activity android:theme="@*android:style/Theme.Translucent.NoTitleBar" android:name=".phone.ProfileActionGatewayActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.googleplus.profile" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".phone.EmptyActivity" />
+        <activity android:theme="@*android:style/Theme.Translucent.NoTitleBar" android:name=".phone.ViewStreamItemActivity" android:exported="true" />
+        <activity android:theme="@*android:style/Theme.Translucent.NoTitleBar" android:name=".phone.ViewStreamItemPhotoActivity" android:exported="true" />
+        <activity android:theme="@*android:style/Theme.Translucent.NoTitleBar" android:name=".phone.ViewCircleActivity" android:exported="true" />
+        <activity android:theme="@*android:style/Theme.Translucent.NoTitleBar" android:name=".phone.InviteContactActivity" android:exported="true" />
+        <activity android:theme="@style/CircleSelectorTheme" android:name=".phone.CirclesMembershipActivity" />
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:name=".phone.PeopleSearchActivity" android:windowSoftInputMode="stateVisible" />
+        <activity android:theme="@style/EditAudienceTheme" android:name=".phone.EditAudienceActivity" />
+        <activity android:theme="@style/EditAudienceTheme" android:name=".phone.EditSquareAudienceActivity" />
+        <activity android:theme="@style/EditAudienceTheme" android:name=".phone.SelectSquareCategoryActivity" android:parentActivityName=".phone.EditSquareAudienceActivity" />
+        <activity android:theme="@style/EditAudienceTheme" android:name=".phone.SquareMemberListActivity" android:parentActivityName=".phone.HostSquareStreamActivity" />
+        <activity android:theme="@style/EditAudienceTheme" android:name=".phone.HostSquareMemberSearchActivity" />
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:name=".phone.LocalReviewActivity" android:parentActivityName=".phone.HomeActivity" />
+        <activity android:theme="@style/Theme.Host" android:name=".phone.PhotoTileOneUpActivity" android:windowSoftInputMode="stateUnchanged" android:logo="@drawable/ic_menu_stream">
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.widget.PHOTO_ACTION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Host" android:name=".phone.PhotoTileSelectionOneUpActivity" android:windowSoftInputMode="stateUnchanged" android:logo="@drawable/ic_menu_stream">
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.widget.PHOTO_ACTION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Host" android:name=".phone.AddToAlbumActivity" />
+        <activity android:theme="@style/Theme.Host" android:name=".phone.HostSingleAlbumTileActivity" android:windowSoftInputMode="stateHidden" />
+        <activity android:theme="@style/Theme.Host" android:name=".phone.HostAllPhotosTileActivity" android:logo="@drawable/ic_menu_photos" />
+        <activity android:theme="@style/Theme.Host" android:name=".phone.HostAllAlbumsTileActivity" android:logo="@drawable/ic_menu_photos" />
+        <activity android:theme="@style/Theme.Host" android:name=".phone.HostCameraRollTileActivity" />
+        <activity android:theme="@style/Theme.Host" android:name=".phone.PhotoTilePickerActivity" android:logo="@drawable/ic_menu_photos" />
+        <activity android:theme="@style/Theme.Host" android:name=".phone.PhotoTilePickerOneUpActivity" android:logo="@drawable/ic_menu_photos" />
+        <activity android:theme="@style/VideoViewTheme" android:name=".phone.VideoViewActivity" android:logo="@drawable/ic_menu_photos" />
+        <activity android:name=".settings.SettingsActivity">
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.PRIVACY_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".phone.LicenseActivity" />
+        <activity android:theme="@style/Theme.EmeraldSea" android:label="@string/preferences_network_transactions_title" android:name=".phone.NetworkTransactionsActivity" />
+        <activity android:theme="@style/Theme.EmeraldSea" android:label="@string/preferences_network_bandwidth_title" android:name=".phone.NetworkStatisticsActivity" />
+        <activity android:theme="@style/Theme.Host" android:name=".phone.UploadStatisticsActivity" android:logo="@drawable/ic_menu_stream" android:parentActivityName=".phone.HomeActivity" />
+        <activity android:label="@string/communication_preference_notifications_button" android:name=".settings.NotificationSettingsActivity" />
+        <activity android:label="@string/sharing_preference_title" android:name=".settings.SharingSettingsActivity" />
+        <activity android:label="@string/contacts_preference_title" android:name=".settings.ContactsSettingsActivity" />
+        <activity android:label="@string/communication_preference_messenger_button" android:name=".settings.MessengerSettingsActivity" />
+        <activity android:label="@string/communication_preference_device_location_button" android:name=".settings.DeviceLocationSettingsActivity" />
+        <activity android:label="@string/photo_preference_instant_upload_button" android:name=".settings.InstantUploadSettingsActivity">
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.INSTANT_UPLOAD_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/photos_preference_title" android:name=".settings.PhotosSettingsActivity" />
+        <activity android:label="@string/preferences_about_button" android:name=".settings.AboutSettingsActivity" />
+        <activity android:label="@string/home_screen_huddle_label" android:icon="@mipmap/realtimechat_launcher_icon" android:name=".phone.ConversationListActivity" android:taskAffinity="com.google.android.apps.realtimechat" android:excludeFromRecents="true" android:logo="@drawable/ic_actionbar_gplus">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.INFO" />
+            </intent-filter>
+        </activity>
+        <activity-alias android:name="com.google.android.apps.circles.realtimechat.ConversationListActivity" android:exported="true" android:targetActivity=".phone.ConversationListActivity" />
+        <activity android:theme="@style/Theme.Messenger" android:label="@string/home_screen_huddle_label" android:icon="@mipmap/realtimechat_launcher_icon" android:name=".phone.ConversationActivity" android:taskAffinity="com.google.android.apps.realtimechat" android:launchMode="singleTop" android:configChanges="orientation|screenSize" android:windowSoftInputMode="stateUnchanged" android:logo="@drawable/ic_actionbar_gplus" />
+        <activity android:theme="@style/Theme.EmeraldSea" android:label="@string/home_screen_huddle_label" android:icon="@mipmap/realtimechat_launcher_icon" android:name=".phone.ParticipantListActivity" android:logo="@drawable/ic_actionbar_gplus" />
+        <activity android:theme="@style/TabletCircleBrowserTheme" android:label="@string/added_to_circle_title" android:name=".phone.AddedToCircleActivity" />
+        <activity android:theme="@style/Theme.Host" android:name=".phone.HostSquareStreamActivity" android:logo="@drawable/ic_menu_stream" android:parentActivityName=".phone.HomeActivity" />
+        <activity android:theme="@style/Theme.Host" android:name=".phone.HostSquareSearchActivity" android:logo="@drawable/ic_menu_stream" android:parentActivityName=".phone.HomeActivity" />
+        <activity android:theme="@*android:style/Theme.Translucent.NoTitleBar" android:name=".phone.PanoramaViewerActivity" />
+        <activity android:theme="@*android:style/Theme.Translucent.NoTitleBar" android:name=".phone.UpgradeGooglePlayServicesActivity" />
+        <activity android:theme="@style/Theme.PlusEditor" android:name=".editor.PlusEditorActivity" android:configChanges="orientation|screenSize" />
+        <service android:name=".service.EsService" />
+        <service android:name=".realtimechat.RealTimeChatService" />
+        <receiver android:name=".service.AccountsChangedReceiver">
+            <intent-filter>
+                <action android:name="android.accounts.LOGIN_ACCOUNTS_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".realtimechat.NotificationReceiver">
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.realtimechat.reset" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".c2dm.C2DMReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="com.google.android.apps.plus" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="com.google.android.apps.plus" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".service.EventFinishedReceiver">
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.eventfinished" />
+            </intent-filter>
+        </receiver>
+        <service android:name=".service.EsSyncAdapterService" android:exported="true">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+            <meta-data android:name="android.content.SyncAdapter" android:resource="@xml/es_sync_adapter" />
+            <meta-data android:name="android.provider.CONTACTS_STRUCTURE" android:resource="@xml/es_contacts" />
+        </service>
+        <service android:name="com.google.android.picasasync.PicasaSyncService" android:exported="false">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+                <action android:name="com.google.android.picasasync.SyncAdapter" />
+            </intent-filter>
+            <meta-data android:name="android.content.SyncAdapter" android:resource="@xml/es_picasa_sync_adapter" />
+            <meta-data android:name="com.google.android.picasasync.priority" android:value="75" />
+            <meta-data android:name="com.google.android.picasasync.enable-down-sync" android:value="false" />
+            <meta-data android:name="com.google.android.picasasync.authority" android:value="com.google.android.apps.plus.content.EsGooglePhotoProvider" />
+        </service>
+        <service android:name=".iu.InstantUploadSyncService" android:exported="true">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+            <meta-data android:name="android.content.SyncAdapter" android:resource="@xml/es_iu_sync_adapter" />
+        </service>
+        <receiver android:name=".iu.InstantUploadSyncService$CarryOverDummyReceiver" />
+        <service android:name=".service.AndroidContactsNotificationService" android:exported="true" />
+        <receiver android:label="@string/widget_posts_title" android:name=".widget.EsWidgetProvider" android:enabled="@bool/display_widgets">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/es_widget" />
+        </receiver>
+        <service android:name=".widget.EsWidgetService" android:exported="false" />
+        <activity android:theme="@*android:style/Theme.Light.Panel" android:name=".widget.EsWidgetConfigurationActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".widget.EsWidgetCameraLauncherActivity" />
+        <activity android:theme="@*android:style/Theme.Translucent.NoTitleBar" android:name=".phone.GatewayActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.PICK_PHOTO" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.LOCATION_PLUS_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@*android:style/Theme.Translucent.NoTitleBar" android:name=".phone.UrlGatewayActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" android:host="plus.google.com" android:path="/" />
+                <data android:scheme="https" android:host="plus.google.com" android:path="/" />
+                <data android:scheme="content" android:host="plus.google.com" android:path="/" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/stream" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/stream" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/stream" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/me" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/me" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/me" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/circles" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/circles" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/circles" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/communities" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/communities" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/communities" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/hot" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/hot" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/hot" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/events" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/events" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/events" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/photos" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/photos" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/photos" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/0" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/0" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/0" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/1" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/1" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/1" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/2" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/2" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/2" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/3" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/3" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/3" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/4" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/4" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/4" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/5" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/5" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/5" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/6" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/6" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/6" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/7" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/7" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/7" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/8" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/8" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/8" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/9" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/9" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/9" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/_/" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/_/" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/u/" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/u/" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/+" />
+                <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/+" />
+                <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/+" />
+                <data android:scheme="http" android:host="google.com" android:pathPrefix="/+" />
+                <data android:scheme="https" android:host="google.com" android:pathPrefix="/+" />
+                <data android:scheme="content" android:host="google.com" android:pathPrefix="/+" />
+                <data android:scheme="http" android:host="www.google.com" android:pathPrefix="/+" />
+                <data android:scheme="https" android:host="www.google.com" android:pathPrefix="/+" />
+                <data android:scheme="content" android:host="www.google.com" android:pathPrefix="/+" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.provider.calendar.action.HANDLE_CUSTOM_EVENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/event" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.apps.plus.action.VIEW_LOCAL_PLUS_PAGE_ABOUT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="http" android:host="plus.google.com" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.Host" android:name=".phone.UrlGatewayLoaderActivity" />
+        <service android:name=".service.SkyjamPlaybackService" />
+        <receiver android:label="@string/app_name" android:name=".widget.EsFroyoWidgetProvider" android:enabled="@bool/display_froyo_widgets">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/es_froyo_widget" />
+        </receiver>
+        <activity android:name=".ads.LegacyPlusOneActivity" />
+        <activity-alias android:name="com.google.android.apps.circles.platform.PlusOneActivity" android:exported="true" android:targetActivity=".ads.LegacyPlusOneActivity" />
+        <activity android:theme="@*android:style/Theme.Translucent.NoTitleBar" android:name=".phone.PlusOneActivity" />
+        <provider android:name="com.google.android.apps.plus.content.AdsProvider" android:exported="true" android:authorities="com.google.plus.platform" />
+        <activity android:name=".phone.NativeCrashReporterActivity" android:process=":native_crash_reporter" android:stateNotNeeded="true" />
+    </application>
+</manifest>

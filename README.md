@@ -27,10 +27,24 @@ and I'll use whatever I find, but I'm not holding my breath.
 I'll add more apps and link types as I come across them. Feel free to ask for
 any specific ones you want. Enjoy!
 
-TODO
+
+Development notes
+===
+Test command line to open URL with ACTION_VIEW intent:
+adb -d shell am start -d [link]
+
+Lots of apps' AndroidManifest.xml manifest files are in app_manifests/.
+To extract an app's manifest:
+- "Back up" the app with
+  [Astro File Manager](https://play.google.com/store/apps/details?id=com.metago.astro)
+- adb pull the apk from /sdcard/backups/apps
+- extract AndroidManifest.xml with
+  [apktool](http://code.google.com/p/android-apktool/): apktool decode FILE.apk
+
+
+Todos
 ===
 More apps:
-GitHub
 WordPress
 OpenTable
 Netflix

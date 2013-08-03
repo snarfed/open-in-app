@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest android:versionCode="31" android:versionName="1.12.3" android:installLocation="auto" package="com.goodreads"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <application android:theme="@style/GoodreadsTheme" android:label="@string/app_name" android:icon="@drawable/icon" android:hardwareAccelerated="true">
+        <activity android:label="Goodreads" android:name=".android.activity.MainMenuActivity" android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:label="Goodreads" android:name=".android.activity.GoodreadsUrlActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="goodreads.com" />
+                <data android:host="www.goodreads.com" />
+                <data android:host="m.goodreads.com" />
+            </intent-filter>
+        </activity>
+        <activity android:label="Sign In" android:name=".android.activity.SignInActivity" android:windowSoftInputMode="stateHidden" />
+        <activity android:label="Sign Up" android:name=".android.activity.SignUpActivity" android:windowSoftInputMode="stateHidden" />
+        <activity android:label="Goodreads FB SSO" android:name=".android.activity.FacebookSsoActivity" android:exported="true" />
+        <activity android:label="Do you have a Goodreads account" android:name=".android.activity.ThirdPartyGoodreadsAskActivity" />
+        <activity android:label="Login to connect account to Goodreads" android:name=".android.activity.ThirdPartyConnectSignInActivity" android:windowSoftInputMode="stateHidden" />
+        <activity android:label="Goodreads Facebook Friends" android:name=".android.activity.WelcomeFacebookAutoAddFriendsActivity" />
+        <activity android:label="Goodreads Facebook Friends" android:name=".android.activity.WelcomeFriendAddFacebookActivity" />
+        <activity android:label="Goodreads Find Friends" android:name=".android.activity.WelcomeFriendAddContactsActivity" />
+        <activity android:label="Goodreads - Friends" android:name=".android.activity.WelcomeFindFriendsActivity" />
+        <activity android:label="Goodreads - Add Books" android:name=".android.activity.WelcomeAddBooksActivity" />
+        <activity android:label="Goodreads - Favorite Genres" android:name=".android.activity.WelcomeUserFavoriteGenresActivity" />
+        <activity android:label="Goodreads - Recommendations" android:name=".android.activity.WelcomeRateBooksActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation" android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:label="User" android:name=".android.activity.UserShowActivity" />
+        <activity android:label="Friends" android:name=".android.activity.UserFriendsActivity" />
+        <activity android:label="Shelves" android:name=".android.activity.UserShelvesActivity" />
+        <activity android:label="Shelf" android:name=".android.activity.ShelfShowActivity" />
+        <activity android:label="Shelve Book" android:name=".android.activity.BookShelverActivity" />
+        <activity android:label="Status" android:name=".android.activity.UserStatusActivity" />
+        <activity android:label="Review Book" android:name=".android.activity.ReviewEditorActivity" android:windowSoftInputMode="stateVisible" />
+        <activity android:label="Book" android:name=".android.activity.BookShowActivity" />
+        <activity android:label="Similar Books" android:name=".android.activity.BookSimilarActivity" />
+        <activity android:label="Reviews" android:name=".android.activity.BookReviewsActivity" />
+        <activity android:label="Review" android:name=".android.activity.ReviewShowActivity" />
+        <activity android:label="Search Books" android:name=".android.activity.SearchActivity" android:windowSoftInputMode="stateVisible" />
+        <activity android:label="Recommend Book" android:name=".android.activity.BookRecommendActivity" />
+        <activity android:label="Favorite Genres" android:name=".android.activity.UserFavoriteGenresActivity" />
+        <activity android:label="Rate Books" android:name=".android.activity.RateBooksActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation" android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:label="Rate Books" android:name=".android.activity.RecommendationsActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation" android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:label="Author" android:name=".android.activity.AuthorShowActivity" />
+        <activity android:label="Author's books" android:name=".android.activity.AuthorListActivity" />
+        <activity android:label="Facebook Friends" android:name=".android.activity.FacebookAutoAddFriendsActivity" />
+        <activity android:label="Contact Friends" android:name=".android.activity.FriendAddContactsActivity" />
+        <activity android:label="Facebook Friends" android:name=".android.activity.FriendAddFacebookActivity" />
+        <activity android:label="Barcode Scanner" android:name=".android.activity.BarcodeScannerMenuActivity" />
+        <activity android:label="Barcode Scanner" android:name=".android.activity.BarcodeShelvingActivity" />
+        <activity android:label="Barcode Scanning History" android:name=".android.activity.BarcodeHistoryActivity" />
+        <activity android:theme="@style/GoodreadsTheme.NoTitleBar.Fullscreen" android:label="Barcode Scanning" android:name=".android.activity.CaptureActivity" android:screenOrientation="landscape" android:configChanges="keyboardHidden|orientation" android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:label="Notifications" android:name=".android.activity.NotificationsActivity" />
+        <activity android:label="Friend Requests" android:name=".android.activity.FriendRequestsActivity" />
+        <activity android:label="Goodreads Messages" android:name=".android.activity.MessageFolderActivity" />
+        <activity android:label="Goodreads Message" android:name=".android.activity.MessageShowActivity" />
+        <activity android:label="Goodreads Message" android:name=".android.activity.MessageCreateActivity" />
+        <activity android:label="Updates" android:name=".android.activity.UpdatesActivity" />
+        <activity android:label="Groups" android:name=".android.activity.UserGroupsActivity" />
+        <activity android:label="Group" android:name=".android.activity.GroupShowActivity" />
+        <activity android:label="Topics" android:name=".android.activity.TopicListActivity" />
+        <activity android:label="Topic" android:name=".android.activity.TopicShowActivity" />
+        <activity android:label="Create " android:name=".android.activity.TopicCreateActivity" />
+        <activity android:label="Goodreads" android:name=".android.activity.WebViewActivity" />
+        <activity android:label="Goodreads" android:name=".android.activity.LocalHtmlViewerActivity" />
+        <activity android:label="Ad" android:name="com.google.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation" />
+        <receiver android:name="com.google.android.apps.analytics.AnalyticsReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+    </application>
+    <supports-screens android:anyDensity="true" android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" android:xlargeScreens="true" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+</manifest>
