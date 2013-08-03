@@ -1,7 +1,13 @@
 <html>
 <body>
-<!-- adb push this to your phone and test that open in app handles taps on
-     links in the browser. -->
+<!--
+adb push this to your phone and test that open in app handles taps on links in
+the browser.
+
+emacs regexp replace to convert single link to <li><a>...
+.*
+<li><a href="\&">\&</a></li>
+-->
 
 <style type="text/css">
 /* body { font-size: 2em; } */
@@ -27,6 +33,14 @@ li { margin-bottom: 1em; }
 <li><a href="https://twitter.com/colbyh/status/362452428571934721">https://twitter.com/colbyh/status/362452428571934721</a></li>
 <li><a href="http://www.twitter.com/colbyh/status/362452428571934721">http://www.twitter.com/colbyh/status/362452428571934721</a></li>
 <li><a href="https://www.twitter.com/colbyh/status/362452428571934721">https://www.twitter.com/colbyh/status/362452428571934721</a></li>
+</ul>
+
+<h1>Instagram</h1>
+<ul>
+<li><a href="http://instagram.com/p/byuvjTsqJo/">http://instagram.com/p/byuvjTsqJo/</a></li>
+<li><a href="https://www.instagram.com/snarfed">https://www.instagram.com/snarfed</a></li>
+<li><a href="http://instagr.am/p/cg9M46iBd5">http://instagr.am/p/cg9M46iBd5</a>
+  <br />(doesn't work for some reason. Instagram app complains "Can't refresh feed")</li>
 </ul>
 
 <h1>GitHub</h1>
