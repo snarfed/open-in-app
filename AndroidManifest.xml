@@ -78,6 +78,8 @@
         <data android:scheme="https" android:host="github.com" android:pathPrefix="/" />
         <data android:scheme="http" android:host="www.github.com" android:pathPrefix="/" />
         <data android:scheme="https" android:host="www.github.com" android:pathPrefix="/" />
+        <!-- <data android:scheme="http" android:host="gist.github.com" android:pathPrefix="/" /> -->
+        <!-- <data android:scheme="https" android:host="gist.github.com" android:pathPrefix="/" /> -->
       </intent-filter>
     </activity>
 
