@@ -44,6 +44,7 @@ public class Instagram extends Activity {
     }
 
     Intent intent = new Intent(Intent.ACTION_VIEW, newUri);
+    intent.setPackage("com.instagram.android");
     // Recommended to prevent occasional Instagram app crashes:
     // https://groups.google.com/d/msg/instagram-api-developers/QmLGb4ImWLU/aXFlNFKfSnUJ
     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
