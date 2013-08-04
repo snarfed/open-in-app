@@ -49,7 +49,12 @@ def main():
   <application android:label="@string/app_name" android:icon="@drawable/u_turn">
 
     <activity android:name="Handler" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
 %s
+      </intent-filter>
     </activity>
 
   </application>
