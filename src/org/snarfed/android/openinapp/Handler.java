@@ -20,8 +20,6 @@ import org.yaml.snakeyaml.Yaml;
 public class Handler extends Activity {
     static final String TAG = "OpenLinkInApp";
 
-    private Map app;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,17 +34,17 @@ public class Handler extends Activity {
         // Read config file and find the app for this host
         Map config = (Map)new Yaml().load(
             getResources().openRawResource(R.raw.apps));
-        this.app = null;
-        for (Map app : (List<Map>)config.get("apps")) {
-            for (String host : (List<String>)app.get("hosts")) {
+        Map app = null;
+        for (Map a : (List<Map>)config.get("apps")) {
+            for (String host : (List<String>)a.get("hosts")) {
                 if (host.equals(uri.getHost())) {
-                    this.app = app;
+                    app = a;
                     break;
                 }
             }
         }
 
-        if (this.app == null) {
+        if (app == null) {
             Log.e(TAG, "Intent URI " + uri + " has unknown host.");
             finish();
             return;
@@ -83,6 +81,16 @@ public class Handler extends Activity {
         Log.i(TAG, "Redirecting " + uri + " to " + newUri);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         intent.setData(newUri);
+        String pkg = (String)app.get("package");
+        if (pkg != null) {
+            intent.setPackage(pkg);
+        }
+
+        // Recommended to prevent occasional Instagram app crashes. Try it if we
+        // start seeing that.
+        // https://groups.google.com/d/msg/instagram-api-developers/QmLGb4ImWLU/aXFlNFKfSnUJ
+        // intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
         startActivity(intent);
         finish();
     }

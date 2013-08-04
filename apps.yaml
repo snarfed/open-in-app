@@ -77,16 +77,17 @@ apps:
   # Just convert the mobile.twitter.com domain to just twitter.com. The Twitter
   # app doesn't handle mobile.twitter.com URLs for some reason.
   # http://omgwtfgames.com/2012/01/android-intents-captured-by-various-twitter-clients/
+  # http://wiki.akosma.com/IPhone_URL_Schemes#Twitter
   hosts:
     - mobile.twitter.com
   package: com.twitter
-  new_base: https://twitter.com
+  new_base: https://twitter.com/
 
 
-# - name: Twitter web intents
 # The official Twitter app handles /intent/... but then just redirects to the
 # browser. It doesn't have native intents for handling retweeting, favorites,
-# etc. thopugh, so there's nothing I could really do here anyway
+# etc. though, so there's nothing I could really do here anyway
+# - name: Twitter web intents
 #   hosts:
 #     - twitter.com
 #     - www.twitter.com
@@ -94,11 +95,24 @@ apps:
 #     - /intent/
 #   package: com.twitter
 
+
 - name: Instagram
+  # Currently the Instagram app only handles intents for opening pictures and
+  # resetting your password, not opening user profiles.
+  #
+  # https://groups.google.com/forum/#!msg/instagram-api-developers/7XUKm9HSAdg/9SrdVmB4trQJ
+  # http://stackoverflow.com/questions/15497261/open-instagram-user-profile
+  #
+  # There is an instagram:// scheme, but evidently it's iOS only.
+  # http://instagram.com/developer/iphone-hooks/
   hosts:
     - instagram.com
     - www.instagram.com
-  package: com.instagram
+  prefixes:
+    - /p/
+  package: com.instagram.android
+  new_base: http://instagr.am/
+
 
 - name: GitHub
   # GitHub's UriLauncherActivity registers to handle all URIs, but doesn't
@@ -113,4 +127,5 @@ apps:
     - github.com
     - www.github.com
     # - gist.github.com
-  package: com.github
+  package: com.github.mobile
+  new_base: https://github.com/
