@@ -5,20 +5,30 @@
 #
 # app:
 # -name: NAME  # for documentation only
+#   # These define the data elements in the intent filter.
 #   hosts:
 #      ...
 #   prefixes: (optional)
 #     ...
 #   patterns: (optional)
 #     ...
-#   package: PACKAGE (optional)  # set on the outgoing intent if specified
+#   # Defaults to prefix / if neither prefixes nor patterns are specified.
 #
-# If neither prefixes nor patterns are specified, generate_manifest.py defaults
-# to using / as the prefix.
+#   # These define the outgoing intent.
+#   package: PACKAGE   (optional)
+#   new_base: BASE_URL (optional)  # e.g. fb:// or http://instagr.am/
+#   uri_transforms:
+#     - from: REGEXP
+#     - to: REGEXP REPLACEMENT
+#
+#   xxx new_scheme: SCHEME (optional)
+#   xxx new_host: SCHEME   (optional)
+#
 
 schemes:
 - http
 - https
+
 
 apps:
 - name: Facebook
@@ -27,11 +37,51 @@ apps:
     - facebook.com
     - www.facebook.com
   package: com.facebook
+  new_base: fb://
+  uri_transforms:
+    # These use the fb:// scheme:
+    # http://stackoverflow.com/a/6638342/186123
+    # http://wiki.akosma.com/IPhone_URL_Schemes#Facebook
+
+    # User id: http://facebook.com/212038
+    - from: ([0-9]+)
+      to:   profile/$1
+    # Page: https://www.facebook.com/pages/mockfb/225279024204684
+    - from: pages/([^/.?]+)/([^/.?]+)
+      to:   page/$2
+    # Post: http://facebook.com/504988744/posts/10151785603608745
+    - from: ([^/.?]+)/posts/([^/.?]+)
+      to:   post/$1_$2?owner=$1
+    # Group: https://www.facebook.com/groups/257050967664385/
+    - from: groups/([^/.?]+)
+      to:   group/$1
+
+    # Username: http://facebook.com/snarfed.org
+    # Looks like the Facebook app doesn't handle username-based profile URIs yet.
+    # http://stackoverflow.com/questions/9281267/how-do-i-link-to-a-facebook-user-in-the-ios-app-by-using-the-username
+    # The old way of passing it in "extra_user_display_name" no longer works:
+    # http://forum.frandroid.com/topic/22299-facebooktwitter-intent/
+    # We could manually look up their user id with the Graph API, but
+    # that's a bit heavyweight.
+    # - from: ([^/]+)
+    #   to:   profile/$1
+
+    # Photo:
+    # https://www.facebook.com/photo.php?fbid=522958101087051&set=at.113298848719647.8466.100001185986830.212743&type=1&theater
+    # Doesn't work yet.
+    # - from: photo\.php\?(.*)fbid=([0-9]+)
+    #   to:   photos?photo=$2
+
 
 - name: Twitter mobile
+  # Just convert the mobile.twitter.com domain to just twitter.com. The Twitter
+  # app doesn't handle mobile.twitter.com URLs for some reason.
+  # http://omgwtfgames.com/2012/01/android-intents-captured-by-various-twitter-clients/
   hosts:
     - mobile.twitter.com
   package: com.twitter
+  new_base: https://twitter.com
+
 
 # - name: Twitter web intents
 # The official Twitter app handles /intent/... but then just redirects to the
