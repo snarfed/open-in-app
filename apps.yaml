@@ -1,3 +1,66 @@
 # Config file for the external apps we support. Used by generate_manifest.py at
 # compile time and Redirect.java at runtime.
+#
+# The schema is:
+#
+# app:
+# -name: NAME  # for documentation only
+#   hosts:
+#      ...
+#   prefixes: (optional)
+#     ...
+#   patterns: (optional)
+#     ...
+#   package: PACKAGE (optional)  # set on the outgoing intent if specified
+#
+# If neither prefixes nor patterns are specified, generate_manifest.py defaults
+# to using / as the prefix.
 
+schemes:
+- http
+- https
+
+apps:
+- name: Facebook
+  # Facebook app intent details in http://stackoverflow.com/questions/6179776
+  hosts:
+    - facebook.com
+    - www.facebook.com
+  package: com.facebook
+
+- name: Twitter mobile
+  hosts:
+    - mobile.twitter.com
+  package: com.twitter
+
+# - name: Twitter web intents
+# The official Twitter app handles /intent/... but then just redirects to the
+# browser. It doesn't have native intents for handling retweeting, favorites,
+# etc. thopugh, so there's nothing I could really do here anyway
+#   hosts:
+#     - twitter.com
+#     - www.twitter.com
+#   prefixes:
+#     - /intent/
+#   package: com.twitter
+
+- name: Instagram
+  hosts:
+    - instagram.com
+    - www.instagram.com
+  package: com.instagram
+
+- name: GitHub
+  # GitHub's UriLauncherActivity registers to handle all URIs, but doesn't
+  # actually handle some of them:
+  # Files: http://github.com/snarfed/open-in-app/blob/master/build.xml
+  # Issue browser: http://github.com/snarfed/facebook-atom/issues
+  # Pull request browser: http://github.com/rogerhu/mockfacebook/pulls
+  # All gist URLs:
+  #  https://gist.github.com/JakeWharton
+  #  https://gist.github.com/JakeWharton/6002797
+  hosts:
+    - github.com
+    - www.github.com
+    # - gist.github.com
+  package: com.github

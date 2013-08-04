@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.snarfed.android.openinapp"
@@ -9,79 +10,23 @@
 
   <application android:label="@string/app_name" android:icon="@drawable/u_turn">
 
-    <activity android:name="Facebook" android:exported="true">
-      <!-- Details in http://stackoverflow.com/questions/6179776 -->
-      <intent-filter>
-        <action android:name="android.intent.action.VIEW" />
-        <category android:name="android.intent.category.DEFAULT" />
-        <category android:name="android.intent.category.BROWSABLE" />
-        <!-- To catch links in Chrome, must include scheme, host, and pathPrefix.
-             http://stackoverflow.com/questions/17706667 -->
-        <data android:scheme="http" android:host="facebook.com" android:pathPattern="/.*" />
-        <data android:scheme="https" android:host="facebook.com" android:pathPattern="/.*" />
-        <data android:scheme="http" android:host="www.facebook.com" android:pathPattern="/.*" />
-        <data android:scheme="https" android:host="www.facebook.com" android:pathPattern="/.*" />
-        <!-- These would be nice for limiting to just the paths we handle, but
-             pathPattern only has weak glob style matching, so i can't exclude
-             slashes from matching profile/page paths like facebook.com/212038. -->
-        <!-- <data android:pathPattern="/.*" /> -->
-        <!-- <data android:pathPrefix="/pages/" /> -->
-        <!-- <data android:pathPattern="/.*/posts/.*" /> -->
-        <!-- <data android:pathPrefix="/groups/" /> -->
-      </intent-filter>
-    </activity>
-
-    <activity android:name="MobileTwitter" android:exported="true">
-      <intent-filter>
-        <action android:name="android.intent.action.VIEW" />
-        <category android:name="android.intent.category.DEFAULT" />
-        <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="http" android:host="mobile.twitter.com" android:pathPrefix="/" />
-        <data android:scheme="https" android:host="mobile.twitter.com" android:pathPrefix="/" />
-      </intent-filter>
-    </activity>
-
-    <!-- The official Twitter app handles these, but it redirects them to
-         the browser. It doesn't have native intents for handling
-         retweeting, favorites, etc. anyway. :/ -->
-    <!-- <activity android:name="TwitterWebIntent" android:exported="true"> -->
-    <!--     <intent-filter> -->
-    <!--       <action android:name="android.intent.action.VIEW" /> -->
-    <!--       <category android:name="android.intent.category.DEFAULT" /> -->
-    <!--       <category android:name="android.intent.category.BROWSABLE" /> -->
-    <!--       <data android:scheme="http" /> -->
-    <!--       <data android:scheme="https" /> -->
-    <!--       <data android:host="twitter.com" /> -->
-    <!--       <data android:host="www.twitter.com" /> -->
-    <!--       <data android:pathPrefix="/intent/" /> -->
-    <!--     </intent-filter> -->
-    <!-- </activity> -->
-
-    <activity android:name="Instagram" android:exported="true">
-      <intent-filter>
-        <action android:name="android.intent.action.VIEW" />
-        <category android:name="android.intent.category.DEFAULT" />
-        <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="http" android:host="instagram.com" android:pathPrefix="/p/" />
-        <data android:scheme="https" android:host="instagram.com" android:pathPrefix="/p/" />
-        <data android:scheme="http" android:host="www.instagram.com" android:pathPrefix="/p/" />
-        <data android:scheme="https" android:host="www.instagram.com" android:pathPrefix="/p/" />
-      </intent-filter>
-    </activity>
-
-    <activity android:name="GitHub" android:exported="true">
-      <intent-filter>
-        <action android:name="android.intent.action.VIEW" />
-        <category android:name="android.intent.category.DEFAULT" />
-        <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="http" android:host="github.com" android:pathPrefix="/" />
-        <data android:scheme="https" android:host="github.com" android:pathPrefix="/" />
-        <data android:scheme="http" android:host="www.github.com" android:pathPrefix="/" />
-        <data android:scheme="https" android:host="www.github.com" android:pathPrefix="/" />
-        <!-- <data android:scheme="http" android:host="gist.github.com" android:pathPrefix="/" /> -->
-        <!-- <data android:scheme="https" android:host="gist.github.com" android:pathPrefix="/" /> -->
-      </intent-filter>
+    <activity android:name="Handler" android:exported="true">
+<data android:scheme="http" android:host="facebook.com" android:pathPrefix="/" />
+<data android:scheme="https" android:host="facebook.com" android:pathPrefix="/" />
+<data android:scheme="http" android:host="www.facebook.com" android:pathPrefix="/" />
+<data android:scheme="https" android:host="www.facebook.com" android:pathPrefix="/" />
+<data android:scheme="http" android:host="mobile.twitter.com" android:pathPrefix="/" />
+<data android:scheme="https" android:host="mobile.twitter.com" android:pathPrefix="/" />
+<data android:scheme="http" android:host="instagram.com" android:pathPrefix="/" />
+<data android:scheme="https" android:host="instagram.com" android:pathPrefix="/" />
+<data android:scheme="http" android:host="www.instagram.com" android:pathPrefix="/" />
+<data android:scheme="https" android:host="www.instagram.com" android:pathPrefix="/" />
+<data android:scheme="http" android:host="github.com" android:pathPrefix="/" />
+<data android:scheme="https" android:host="github.com" android:pathPrefix="/" />
+<data android:scheme="http" android:host="www.github.com" android:pathPrefix="/" />
+<data android:scheme="https" android:host="www.github.com" android:pathPrefix="/" />
     </activity>
 
   </application>
 </manifest>
+

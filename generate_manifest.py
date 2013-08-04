@@ -4,20 +4,20 @@
 import yaml
 
 CONFIG_FILE = 'apps.yaml'
-SCHEMES = ('http', 'https')
 
 
 def main():
   with open(CONFIG_FILE) as f:
-    apps = yaml.load(f)
+    config = yaml.load(f)
 
+  schemes = config['schemes']
   data = []
-  for app in apps['app']:
+  for app in config['apps']:
     assert 'hosts' in app, 'app %s is missing hosts field' % app['name']
     data_elements = []
 
     for host in app['hosts']:
-      for scheme in SCHEMES:
+      for scheme in schemes:
         prefixes = app.get('prefixes', [])
         patterns = app.get('patterns', [])
         if not prefixes and not patterns:
@@ -25,6 +25,9 @@ def main():
 
         for tag, values in ('pathPrefix', prefixes), ('pathPattern', patterns):
           for value in values:
+            # To catch links in Chrome, must include scheme, host, and
+            # either pathPrefix or pathPattern.
+            # http://stackoverflow.com/questions/17706667
             data.append(
               '<data android:scheme="%s" android:host="%s" android:%s="%s" />' %
               (scheme, host, tag, value))
