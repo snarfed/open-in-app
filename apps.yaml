@@ -1,0 +1,3 @@
+# Config file for the external apps we support. Used by generate_manifest.py at
+# compile time and Redirect.java at runtime.
+

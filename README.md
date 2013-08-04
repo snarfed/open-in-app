@@ -30,6 +30,16 @@ any specific ones you want. Enjoy!
 
 Development notes
 ===
+
+This app is heavily data-driven. The external apps to integrate with are defined
+in apps.yaml. generate_manifest.py uses that file at compile time to generate
+AndroidManifest.xml, and the app reads it at runtime to determine how to handle
+and redirect intents.
+
+The Python YAML library is PyYAML, grossly hacked as a symlink to App Engine's
+version in ~/google_appengine/ so that I don't have to check it into the repo.
+The Java YAML library is SnakeYAML, checked into libs/ as a jar.
+
 Test command line to open URL with ACTION_VIEW intent:
 adb -d shell am start -d [link]
 
