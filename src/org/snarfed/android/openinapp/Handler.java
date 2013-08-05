@@ -72,7 +72,7 @@ public class Handler extends Activity {
             }
 
             if (!matched) {
-                giveUp(uri);
+                giveUp(uri, app);
                 return;
             }
         }
@@ -95,7 +95,7 @@ public class Handler extends Activity {
         finish();
     }
 
-    public void giveUp(Uri uri) {
+    public void giveUp(Uri uri, Map app) {
         // I couldn't find a way to either 1) filter my own app/activity out of
         // the handlers for the resulting mobile.twitter.com intent, or 2) force
         // an intent to open only in a browser. CATEGORY_BROWSABLE,
@@ -106,23 +106,26 @@ public class Handler extends Activity {
         // So, I create the chooser manually and remove this app and the Twitter
         // app (which redirects to mobile.twitter.com). Code based on
         // http://hkdevtips.blogspot.com/2013/02/customize-your-actionchooser-intent.html
-        Toast.makeText(this, "Sorry, Open Link in App can't handle this link.",
+        Toast.makeText(this, "Sorry, " + (String)app.get("name") +
+                       " can't handle this link.",
                        Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         List<Intent> apps = new ArrayList<Intent>();
+        String appPkg = (String)app.get("package");
         for (ResolveInfo info : getPackageManager().queryIntentActivities(intent, 0)) {
             String pkg = info.activityInfo.packageName;
-            if (!pkg.equals(getClass().getPackage()) &&
-                !pkg.equals("com.twitter.android")) {
+            if (!pkg.equals(getClass().getPackage().getName()) &&
+                !pkg.equals(appPkg)) {
                 apps.add(new Intent(intent).setPackage(pkg));
             }
         }
 
-        String title = getResources().getText(R.string.twitter_app_chooser_title).toString();
         // Create the chooser with the first explicit app intent, then add the
         // others as extras.
-        intent = Intent.createChooser(apps.remove(0), title);
+        intent = Intent.createChooser(apps.remove(0), null);
         intent.putExtra(Intent.EXTRA_INITIAL_INTENTS, apps.toArray(new Parcelable[]{}));
+        startActivity(intent);
+        finish();
     }
 }
