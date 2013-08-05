@@ -16,10 +16,11 @@ li { margin-bottom: 1em; }
 
 <h1>Facebook</h1>
 <ul>
-<li><a href="http://www.facebook.com/snarfed.org">http://facebook.com/snarfed.org</a></li>
 <li><a href="https://facebook.com/212038">https://facebook.com/212038</a></li>
 <li><a href="http://www.facebook.com/212038">http://www.facebook.com/212038</a></li>
 <li><a href="https://facebook.com/504988744/posts/10151785603608745">http://facebook.com/504988744/posts/10151785603608745</a></li>
+<li>Should fail gracefully:</li>
+<li><a href="http://www.facebook.com/snarfed.org">http://facebook.com/snarfed.org</a></li>
 </ul>
 
 <h1>Twitter</h1>
@@ -33,9 +34,10 @@ li { margin-bottom: 1em; }
 <h1>Instagram</h1>
 <ul>
 <li><a href="http://instagram.com/p/byuvjTsqJo/">http://instagram.com/p/byuvjTsqJo/</a></li>
-<li><a href="https://www.instagram.com/snarfed">https://www.instagram.com/snarfed</a></li>
+<li>This pic breaks Instagram app itself for some reason. It complains "Can't refresh feed":</li>
 <li><a href="http://instagr.am/p/cg9M46iBd5">http://instagr.am/p/cg9M46iBd5</a>
-  <br />(doesn't work for some reason. Instagram app complains "Can't refresh feed")</li>
+<li>Shouldn't try to handle:</li>
+<li><a href="https://www.instagram.com/snarfed">https://www.instagram.com/snarfed</a></li>
 </ul>
 
 <h1>GitHub</h1>
@@ -66,6 +68,7 @@ li { margin-bottom: 1em; }
 <li><a href="http://goodreads.com/book/show/930.Memoirs_of_a_Geisha">https://www.goodreads.com/book/show/930.Memoirs_of_a_Geisha</a></li>
 <li><a href="http://goodreads.com/review/show/596612656">https://www.goodreads.com/review/show/596612656</a></li>
 <li><a href="https://m.goodreads.com/review/list/19612839-ryan-barrett?shelf=to-read">https://www.goodreads.com/review/list/19612839-ryan-barrett?shelf=to-read</a></li>
+<li><a href="http://www.goodreads.com/snarfed?foo#asdf">http://www.goodreads.com/snarfed?foo#asdf</a></li>
 </ul>
 
 <h1>Quip</h1>

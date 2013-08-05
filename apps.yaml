@@ -17,9 +17,10 @@
 #   # These define the outgoing intent.
 #   package: PACKAGE   (optional)
 #   new_base: BASE_URL (optional)  # e.g. fb:// or http://instagr.am/
+#
 #   uri_transforms:
-#     - from: REGEXP
-#     - to: REGEXP REPLACEMENT
+#     - from: REGEXP            # full match against path only
+#     - to: REGEXP REPLACEMENT  # may use $N for matched groups
 #
 #   xxx new_scheme: SCHEME (optional)
 #   xxx new_host: SCHEME   (optional)
@@ -154,7 +155,9 @@ apps:
     - www.instagram.com
   prefixes:
     - /p/
-  package: com.instagram.android
+  # This is the package Instagram sets in its manifest, but I get
+  # ActivityNotFoundException when I try to use it.
+  # package: com.instagram.android
   new_base: http://instagr.am/
 
 
