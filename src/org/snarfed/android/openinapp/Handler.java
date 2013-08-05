@@ -60,10 +60,15 @@ public class Handler extends Activity {
         List<Map<String, String>> transforms = (List<Map<String, String>>)
                                                app.get("uri_transforms");
         String path = uri.getPath();
+        if (path.startsWith("/")) {
+            path = path.substring(1);
+        }
+
         if (transforms != null) {
             boolean matched = false;
             for (Map<String, String> transform : transforms) {
-                Matcher matcher = Pattern.compile("/" + transform.get("from") + "/?")
+                String from = (String)transform.get("from");
+                Matcher matcher = Pattern.compile(from + "/?")
                                   .matcher(path);
                 if (matcher.matches()) {
                     path = matcher.replaceFirst(transform.get("to"));
@@ -73,19 +78,31 @@ public class Handler extends Activity {
             }
 
             if (!matched) {
+                Log.w(TAG, "URI " + uri + " didn't match any uri_transforms for " +
+                      (String)app.get("name"));
                 giveUp(uri, app);
                 return;
             }
         }
 
-        Uri newUri = Uri.parse(base + path);
-        Log.i(TAG, "Redirecting " + uri + " to " + newUri);
+        String newUri = base + path;
+        String query = uri.getQuery();
+        if (query != null) {
+            newUri += "?" + query;
+        }
+        // I don't think intent URIs ever have fragments, but just in case.
+        String fragment = uri.getFragment();
+        if (fragment != null) {
+            newUri += "#" + fragment;
+        }
+
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        intent.setData(newUri);
+        intent.setData(Uri.parse(newUri));
         String pkg = (String)app.get("package");
         if (pkg != null) {
             intent.setPackage(pkg);
         }
+        Log.i(TAG, "Redirecting " + getIntent() + " to " + intent);
 
         // Recommended to prevent occasional Instagram app crashes. Try it if we
         // start seeing that.
