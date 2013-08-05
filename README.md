@@ -63,16 +63,3 @@ Unfortunately, pathPattern is a very limited subset of regexp: only . and * are
 supported. That's not enough for some of the URI pattern matching we need. In
 these cases, we overspecify a prefix or pattern and do the rest of the filtering
 at runtime.
-
-
-Todos
-===
-deregister intents for apps that aren't installed
-More apps:
-WordPress
-OpenTable
-Netflix
-Hulu
-YouTube? or does it already handle everything right?
-Tumblr
-...others?
