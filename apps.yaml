@@ -1,5 +1,5 @@
 # Config file for the external apps we support. Used by generate_manifest.py at
-# compile time and Redirect.java at runtime.
+# compile time and Handler.java at runtime.
 #
 # The schema is:
 #
@@ -79,15 +79,23 @@ apps:
   # Files: http://github.com/snarfed/open-in-app/blob/master/build.xml
   # Issue browser: http://github.com/snarfed/facebook-atom/issues
   # Pull request browser: http://github.com/rogerhu/mockfacebook/pulls
-  # All gist URLs:
-  #  https://gist.github.com/JakeWharton
-  #  https://gist.github.com/JakeWharton/6002797
   hosts:
     - github.com
     - www.github.com
-    # - gist.github.com
   package: com.github.mobile
   new_base: https://github.com/
+
+- name: GitHub Gist
+  # Only supports gists, not user profiles.
+  hosts:
+    - gist.github.com
+  package: com.github.mobile
+  uri_transforms:
+    #  https://gist.github.com/6002797
+    #  https://gist.github.com/JakeWharton/6002797
+    #  https://gist.github.com/abcdef1234567890abcd
+    - from: ([^/]+/)?([0-9]+|[a-f0-9]{20})
+      to:   $2
 
 
 # Google+ is incredibly thorough about handling all the URLs it can, and it
