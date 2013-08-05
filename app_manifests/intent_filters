@@ -1,0 +1,198 @@
+facebook
+===
+<intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <data android:scheme="facebook" />
+</intent-filter>
+<intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="fb" />
+</intent-filter>
+<intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="http" android:host="www.facebook.com" android:pathPrefix="/n/" />
+    <data android:scheme="https" android:host="www.facebook.com" android:pathPrefix="/n/" />
+    <data android:scheme="http" android:host="m.facebook.com" android:pathPrefix="/n/" />
+    <data android:scheme="https" android:host="m.facebook.com" android:pathPrefix="/n/" />
+</intent-filter>
+
+
+github
+===
+<intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <data android:scheme="http" android:host="github.com" />
+    <category android:name="android.intent.category.DEFAULT" />
+</intent-filter>
+<intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <data android:scheme="https" android:host="github.com" />
+    <category android:name="android.intent.category.DEFAULT" />
+</intent-filter>
+<intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <data android:scheme="http" android:host="gist.github.com" />
+    <category android:name="android.intent.category.DEFAULT" />
+</intent-filter>
+<intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <data android:scheme="https" android:host="gist.github.com" />
+    <category android:name="android.intent.category.DEFAULT" />
+</intent-filter>
+
+
+goodreads
+===
+<intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="http" />
+    <data android:scheme="https" />
+    <data android:host="goodreads.com" />
+    <data android:host="www.goodreads.com" />
+    <data android:host="m.goodreads.com" />
+</intent-filter>
+
+
+calendar
+===
+<intent-filter android:priority="50">
+    <action android:name="android.intent.action.VIEW"/>
+    <category android:name="android.intent.category.DEFAULT"/>
+    <category android:name="android.intent.category.BROWSABLE"/>
+    <data android:host="www.google.com" android:pathPrefix="/calendar/event" android:scheme="http"/>
+    <data android:host="www.google.com" android:pathPrefix="/calendar/event" android:scheme="https"/>
+    <data android:host="www.google.com" android:pathPattern="/calendar/hosted/.*/event" android:scheme="http"/>
+    <data android:host="www.google.com" android:pathPattern="/calendar/hosted/.*/event" android:scheme="https"/>
+</intent-filter>
+
+
+hulu
+===
+<intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="http" android:host="hulu.com" android:pathPrefix="/watch-mobile/" />
+    <data android:scheme="http" android:host="www.hulu.com" android:pathPrefix="/watch-mobile/" />
+    <data android:scheme="https" android:host="hulu.com" android:pathPrefix="/watch-mobile/" />
+    <data android:scheme="https" android:host="www.hulu.com" android:pathPrefix="/watch-mobile/" />
+    <data android:scheme="http" android:host="hulu.com" android:pathPrefix="/show-mobile/" />
+    <data android:scheme="http" android:host="www.hulu.com" android:pathPrefix="/show-mobile/" />
+    <data android:scheme="https" android:host="hulu.com" android:pathPrefix="/show-mobile/" />
+    <data android:scheme="https" android:host="www.hulu.com" android:pathPrefix="/show-mobile/" />
+</intent-filter>
+
+
+twitter
+===
+<intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="http" android:host="twitter.com" />
+    <data android:scheme="https" android:host="twitter.com" />
+    <data android:scheme="http" android:host="www.twitter.com" />
+    <data android:scheme="https" android:host="www.twitter.com" />
+    <data android:scheme="twitter" android:host="session" />
+</intent-filter>
+
+
+instagram
+===
+<intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="http" android:host="instagr.am" android:pathPrefix="/p/" />
+    <data android:scheme="https" android:host="instagr.am" android:pathPrefix="/p/" />
+    <data android:scheme="http" android:host="instagram.com" android:pathPrefix="/p/" />
+    <data android:scheme="https" android:host="instagram.com" android:pathPrefix="/p/" />
+</intent-filter>
+
+
+google+
+===
+<intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="http" android:host="plus.google.com" android:path="/" />
+    <data android:scheme="https" android:host="plus.google.com" android:path="/" />
+    <data android:scheme="content" android:host="plus.google.com" android:path="/" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/stream" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/stream" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/stream" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/me" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/me" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/me" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/circles" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/circles" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/circles" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/communities" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/communities" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/communities" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/hot" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/hot" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/hot" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/events" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/events" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/events" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/photos" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/photos" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/photos" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/0" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/0" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/0" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/1" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/1" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/1" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/2" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/2" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/2" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/3" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/3" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/3" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/4" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/4" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/4" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/5" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/5" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/5" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/6" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/6" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/6" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/7" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/7" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/7" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/8" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/8" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/8" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/9" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/9" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/9" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/_/" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/_/" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/u/" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/u/" />
+</intent-filter>
+<intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="http" android:host="plus.google.com" android:pathPrefix="/+" />
+    <data android:scheme="https" android:host="plus.google.com" android:pathPrefix="/+" />
+    <data android:scheme="content" android:host="plus.google.com" android:pathPrefix="/+" />
+    <data android:scheme="http" android:host="google.com" android:pathPrefix="/+" />
+    <data android:scheme="https" android:host="google.com" android:pathPrefix="/+" />
+    <data android:scheme="content" android:host="google.com" android:pathPrefix="/+" />
+    <data android:scheme="http" android:host="www.google.com" android:pathPrefix="/+" />
+    <data android:scheme="https" android:host="www.google.com" android:pathPrefix="/+" />
+    <data android:scheme="content" android:host="www.google.com" android:pathPrefix="/+" />
+</intent-filter>
