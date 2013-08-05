@@ -40,8 +40,8 @@ def main():
   -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.snarfed.android.openinapp"
-      android:versionCode="4"
-      android:versionName="1.0.3">
+      android:versionCode="5"
+      android:versionName="1.5">
 
   <uses-sdk android:minSdkVersion="4"
             android:targetSdkVersion="17" />
