@@ -19,13 +19,15 @@ import android.util.Log;
 // http://twitter.com/intent/user?screen_name=alwaysmikegomez
 
 public class TwitterWebIntent extends Activity {
+  static final String TAG = "OpenLinkInApp.TwitterWebIntent";
+
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     Uri uri = getIntent().getData();
     if (uri == null || uri.getPath() == null) {
-      Log.i(Constants.TAG, "No URI in intent! Exiting.");
+      Log.i(TAG, "No URI in intent! Exiting.");
       finish();
       return;
     }
@@ -61,11 +63,11 @@ public class TwitterWebIntent extends Activity {
       }
 
       intent.putExtra(Intent.EXTRA_TEXT, text);
-      Log.i(Constants.TAG, "Redirecting " + uri + " to ACTION_SEND with text/plain: " + text);
+      Log.i(TAG, "Redirecting " + uri + " to ACTION_SEND with text/plain: " + text);
 
     } else {
       intent = new Intent(getIntent());
-      Log.i(Constants.TAG, "Unknown path " + uri.getPath() + " , resending original intent.");
+      Log.i(TAG, "Unknown path " + uri.getPath() + " , resending original intent.");
     }
 
     startActivity(intent);
