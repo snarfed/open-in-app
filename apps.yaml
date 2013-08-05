@@ -165,20 +165,20 @@ apps:
   # http://wiki.akosma.com/IPhone_URL_Schemes#Twitter
   hosts:
     - mobile.twitter.com
-  package: com.twitter
+  package: com.twitter.android
   new_base: https://twitter.com/
 
 
+- name: Twitter
+  hosts:
+    - twitter.com
+    - www.twitter.com
 # The official Twitter app handles /intent/... but then just redirects to the
 # browser. It doesn't have native intents for handling retweeting, favorites,
-# etc. though, so there's nothing I could really do here anyway
-# - name: Twitter web intents
-#   hosts:
-#     - twitter.com
-#     - www.twitter.com
+# etc. though, so there's nothing I could really do here anyway.
 #   prefixes:
 #     - /intent/
-#   package: com.twitter
+  package: com.twitter.android
 
 
 # - name: WordPress
