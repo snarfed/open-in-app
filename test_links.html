@@ -5,7 +5,7 @@ adb push this to your phone and test that open in app handles taps on links in
 the browser.
 
 emacs regexp replace to convert single link to <li><a>...
-.*
+^http.*
 <li><a href="\&">\&</a></li>
 -->
 
@@ -16,23 +16,17 @@ li { margin-bottom: 1em; }
 
 <h1>Facebook</h1>
 <ul>
-<li><a href="http://facebook.com/snarfed.org">http://facebook.com/snarfed.org</a></li>
-<li><a href="http://facebook.com/212038">http://facebook.com/212038</a></li>
+<li><a href="http://www.facebook.com/snarfed.org">http://facebook.com/snarfed.org</a></li>
 <li><a href="https://facebook.com/212038">https://facebook.com/212038</a></li>
 <li><a href="http://www.facebook.com/212038">http://www.facebook.com/212038</a></li>
-<li><a href="http://facebook.com/504988744/posts/10151785603608745">http://facebook.com/504988744/posts/10151785603608745</a></li>
+<li><a href="https://facebook.com/504988744/posts/10151785603608745">http://facebook.com/504988744/posts/10151785603608745</a></li>
 </ul>
 
 <h1>Twitter</h1>
 <ul>
-<li><a href="http://twitter.com/">http://twitter.com/</a></li>
-<li><a href="https://twitter.com/">https://twitter.com/</a></li>
-<li><a href="http://twitter.com/snarfed_org">http://twitter.com/snarfed_org</a></li>
-<li><a href="https://twitter.com/snarfed_org">https://twitter.com/snarfed_org</a></li>
+<li><a href="http://www.twitter.com/snarfed_org">http://twitter.com/snarfed_org</a></li>
+<li><a href="https://twitter.com/snarfed_org">http://twitter.com/snarfed_org</a></li>
 <li><a href="http://twitter.com/colbyh/status/362452428571934721">http://twitter.com/colbyh/status/362452428571934721</a></li>
-<li><a href="https://twitter.com/colbyh/status/362452428571934721">https://twitter.com/colbyh/status/362452428571934721</a></li>
-<li><a href="http://www.twitter.com/colbyh/status/362452428571934721">http://www.twitter.com/colbyh/status/362452428571934721</a></li>
-<li><a href="https://www.twitter.com/colbyh/status/362452428571934721">https://www.twitter.com/colbyh/status/362452428571934721</a></li>
 </ul>
 
 <h1>Instagram</h1>
@@ -45,39 +39,42 @@ li { margin-bottom: 1em; }
 
 <h1>GitHub</h1>
 <li><a href="http://github.com/snarfed">http://github.com/snarfed</a></li>
-<li><a href="https://github.com/snarfed">https://github.com/snarfed</a></li>
 <li><a href="http://www.github.com/snarfed/open-in-app">http://www.github.com/snarfed/open-in-app</a></li>
-<li><a href="https://www.github.com/snarfed/open-in-app">https://www.github.com/snarfed/open-in-app</a></li>
-<li><a href="http://github.com/snarfed/open-in-app/blob/master/build.xml">http://github.com/snarfed/open-in-app/blob/master/build.xml</a></li>
-<li><a href="https://github.com/snarfed/open-in-app/blob/master/build.xml">https://github.com/snarfed/open-in-app/blob/master/build.xml</a></li>
-<li><a href="http://github.com/snarfed/open-in-app/commit/a8865ac8d7bd13667287943a8b9e81b8eb970629">http://github.com/snarfed/open-in-app/commit/a8865ac8d7bd13667287943a8b9e81b8eb970629</a></li>
-<li><a href="https://github.com/snarfed/open-in-app/commit/a8865ac8d7bd13667287943a8b9e81b8eb970629">https://github.com/snarfed/open-in-app/commit/a8865ac8d7bd13667287943a8b9e81b8eb970629</a></li>
-<li><a href="http://github.com/snarfed/facebook-atom/issues">http://github.com/snarfed/facebook-atom/issues</a></li>
-<li><a href="https://github.com/snarfed/facebook-atom/issues">https://github.com/snarfed/facebook-atom/issues</a></li>
+<li><a href="https://github.com/snarfed/open-in-app/commit/a8865ac8d7bd13667287943a8b9e81b8eb970629">http://github.com/snarfed/open-in-app/commit/a8865ac8d7bd13667287943a8b9e81b8eb970629</a></li>
 <li><a href="http://github.com/snarfed/facebook-atom/issues/1">http://github.com/snarfed/facebook-atom/issues/1</a></li>
-<li><a href="https://github.com/snarfed/facebook-atom/issues/1">https://github.com/snarfed/facebook-atom/issues/1</a></li>
-<li><a href="http://github.com/rogerhu/mockfacebook/pulls">http://github.com/rogerhu/mockfacebook/pulls</a></li>
-<li><a href="https://github.com/rogerhu/mockfacebook/pulls">https://github.com/rogerhu/mockfacebook/pulls</a></li>
-<li><a href="http://github.com/rogerhu/mockfacebook/pull/22">http://github.com/rogerhu/mockfacebook/pull/22</a></li>
 <li><a href="https://github.com/rogerhu/mockfacebook/pull/22">https://github.com/rogerhu/mockfacebook/pull/22</a></li>
+<li>GitHub doesn't handle these:</li>
+<li><a href="https://github.com/snarfed/open-in-app/blob/master/build.xml">https://github.com/snarfed/open-in-app/blob/master/build.xml</a></li>
+<li><a href="http://github.com/snarfed/facebook-atom/issues">http://github.com/snarfed/facebook-atom/issues</a></li>
+<li><a href="http://github.com/rogerhu/mockfacebook/pulls">http://github.com/rogerhu/mockfacebook/pulls</a></li>
 <li><a href="https://gist.github.com/JakeWharton/6002797">https://gist.github.com/JakeWharton/6002797</a></li>
 <li><a href="https://gist.github.com/JakeWharton">https://gist.github.com/JakeWharton</a></li>
+</ul>
+
+<h1>Hulu</h1>
+<ul>
+<li><a href="http://hulu.com/30-rock">http://hulu.com/30-rock</a></li>
+<li><a href="http://www.hulu.com/watch/99944">http://www.hulu.com/watch/99944</a></li>
+</ul>
+
+
+<h1>Goodreads</h1>
+<ul>
+<li><a href="http://www.goodreads.com/snarfed">http://www.goodreads.com/snarfed</a></li>
+<li><a href="https://www.goodreads.com/user/show/19612839-ryan-barrett">https://www.goodreads.com/user/show/19612839-ryan-barrett</a></li>
+<li><a href="http://goodreads.com/book/show/930.Memoirs_of_a_Geisha">https://www.goodreads.com/book/show/930.Memoirs_of_a_Geisha</a></li>
+<li><a href="http://goodreads.com/review/show/596612656">https://www.goodreads.com/review/show/596612656</a></li>
+<li><a href="https://m.goodreads.com/review/list/19612839-ryan-barrett?shelf=to-read">https://www.goodreads.com/review/list/19612839-ryan-barrett?shelf=to-read</a></li>
+</ul>
+
 
 <h1>Quip</h1>
 <ul>
+<li><a href="http://quip.com/">http://quip.com/</a>
+<li><a href="https://quip.com/account/login">https://quip.com/account/login</a>
 <li><a href="http://quip.com/INYAAAxmY90">http://quip.com/INYAAAxmY90</a>
 <li><a href="https://quip.com/INYAAAxmY90">https://quip.com/INYAAAxmY90</a>
 <li><a href="http://www.quip.com/INYAAAxmY90">http://www.quip.com/INYAAAxmY90</a>
-<li><a href="https://www.quip.com/INYAAAxmY90">https://www.quip.com/INYAAAxmY90</a>
-<li><a href="http://quip.com/">http://quip.com/</a>
-<li><a href="https://quip.com/">https://quip.com/</a>
-<li><a href="http://quip.com/business">http://quip.com/business</a>
-<li><a href="http://quip.com/account/login">http://quip.com/account/login</a>
-<li><a href="https://quip.com/account/login">https://quip.com/account/login</a>
-<li><a href="http://blog.quip.com/">http://blog.quip.com/</a>
-<li><a href="https://blog.quip.com/">https://blog.quip.com/</a>
-<li><a href="http://quip.com/blog">http://quip.com/blog</a>
-<li><a href="https://quip.com/blog/">https://quip.com/blog/</a>
 </ul>
 </body>
 </html>

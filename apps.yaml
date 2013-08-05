@@ -36,7 +36,7 @@ apps:
   hosts:
     - facebook.com
     - www.facebook.com
-  package: com.facebook
+  package: com.facebook.katana
   new_base: fb://
   uri_transforms:
     # These use the fb:// scheme:
@@ -73,6 +73,66 @@ apps:
     #   to:   photos?photo=$2
 
 
+- name: GitHub
+  # GitHub's UriLauncherActivity registers to handle all URIs, but doesn't
+  # actually handle some of them:
+  # Files: http://github.com/snarfed/open-in-app/blob/master/build.xml
+  # Issue browser: http://github.com/snarfed/facebook-atom/issues
+  # Pull request browser: http://github.com/rogerhu/mockfacebook/pulls
+  # All gist URLs:
+  #  https://gist.github.com/JakeWharton
+  #  https://gist.github.com/JakeWharton/6002797
+  hosts:
+    - github.com
+    - www.github.com
+    # - gist.github.com
+  package: com.github.mobile
+  new_base: https://github.com/
+
+
+# Google+ is incredibly thorough about handling all the URLs it can, and it
+# registers them all so that it handles link taps in browsers. I have nothing
+# more to add. :P
+# - name: Google+
+#   package: com.google.android.apps.plus
+
+
+# Goodreads doesn't register for browser link taps, but it does handle all of
+# its URLs, so just pass them through unchanged.
+- name: Goodreads
+  hosts:
+    - goodreads.com
+    - www.goodreads.com
+    - m.goodreads.com
+  package: com.goodreads
+
+
+# Hulu supports URLs with the /show-mobile/ and /watch-mobile/ prefixes, but I
+# haven't yet figured out their formats. Naive URLs like
+# http://hulu.com/show-mobile/30-rock and http://hulu.com/watch-mobile/449173
+# don't work.
+# - name: Hulu
+#   package: com.hulu.plus
+
+
+- name: Instagram
+  # Currently the Instagram app only handles intents for opening pictures and
+  # resetting your password, not opening user profiles.
+  #
+  # https://groups.google.com/forum/#!msg/instagram-api-developers/7XUKm9HSAdg/9SrdVmB4trQJ
+  # http://stackoverflow.com/questions/15497261/open-instagram-user-profile
+  #
+  # There is an instagram:// scheme, but evidently it's iOS only.
+  # http://instagram.com/developer/iphone-hooks/
+  hosts:
+    - instagram.com
+    - www.instagram.com
+  prefixes:
+    - /p/
+  package: com.instagram.android
+  new_base: http://instagr.am/
+
+
 - name: Twitter mobile
   # Just convert the mobile.twitter.com domain to just twitter.com. The Twitter
   # app doesn't handle mobile.twitter.com URLs for some reason.
@@ -96,36 +156,5 @@ apps:
 #   package: com.twitter
 
 
-- name: Instagram
-  # Currently the Instagram app only handles intents for opening pictures and
-  # resetting your password, not opening user profiles.
-  #
-  # https://groups.google.com/forum/#!msg/instagram-api-developers/7XUKm9HSAdg/9SrdVmB4trQJ
-  # http://stackoverflow.com/questions/15497261/open-instagram-user-profile
-  #
-  # There is an instagram:// scheme, but evidently it's iOS only.
-  # http://instagram.com/developer/iphone-hooks/
-  hosts:
-    - instagram.com
-    - www.instagram.com
-  prefixes:
-    - /p/
-  package: com.instagram.android
-  new_base: http://instagr.am/
-
-
-- name: GitHub
-  # GitHub's UriLauncherActivity registers to handle all URIs, but doesn't
-  # actually handle some of them:
-  # Files: http://github.com/snarfed/open-in-app/blob/master/build.xml
-  # Issue browser: http://github.com/snarfed/facebook-atom/issues
-  # Pull request browser: http://github.com/rogerhu/mockfacebook/pulls
-  # All gist URLs:
-  #  https://gist.github.com/JakeWharton
-  #  https://gist.github.com/JakeWharton/6002797
-  hosts:
-    - github.com
-    - www.github.com
-    # - gist.github.com
-  package: com.github.mobile
-  new_base: https://github.com/
+# - name: WordPress
+#   package: org.wordpress.android

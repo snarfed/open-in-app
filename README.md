@@ -55,6 +55,10 @@ For an intent filter to catch taps on links in Chrome for Android, you have to
 include scheme, host, *and* either pathPrefix or pathPattern in the intent
 filter's data element: http://stackoverflow.com/questions/17706667
 
+Oddly, this also seems to "unlock" other apps' intent filters for browser link
+taps too. Goodreads, for example, doesn't normally handle browser link taps, but
+it does when Open Link in App is installed. Odd.
+
 Unfortunately, pathPattern is a very limited subset of regexp: only . and * are
 supported. That's not enough for some of the URI pattern matching we need. In
 these cases, we overspecify a prefix or pattern and do the rest of the filtering
@@ -63,6 +67,7 @@ at runtime.
 
 Todos
 ===
+deregister intents for apps that aren't installed
 More apps:
 WordPress
 OpenTable
