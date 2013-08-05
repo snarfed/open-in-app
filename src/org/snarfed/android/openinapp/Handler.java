@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
@@ -91,8 +92,13 @@ public class Handler extends Activity {
         // https://groups.google.com/d/msg/instagram-api-developers/QmLGb4ImWLU/aXFlNFKfSnUJ
         // intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-        startActivity(intent);
-        finish();
+        try {
+            startActivity(intent);
+            finish();
+        } catch (ActivityNotFoundException e) {
+            Log.w(TAG, e);
+            giveUp(uri, app);
+        }
     }
 
     public void giveUp(Uri uri, Map app) {
