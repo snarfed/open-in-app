@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:sharedUserId="com.google.android.calendar.uid.shared" android:sharedUserLabel="@string/app_label" android:versionCode="201306302" android:versionName="201306302" package="com.android.calendar">
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="com.google.android.googleapps.permission.GOOGLE_AUTH.mail"/>
+    <uses-permission android:name="android.permission.READ_SYNC_STATS"/>
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+    <uses-permission android:name="com.google.android.googleapps.permission.GOOGLE_AUTH"/>
+    <uses-permission android:name="android.permission.SUBSCRIBED_FEEDS_READ"/>
+    <uses-permission android:name="android.permission.SUBSCRIBED_FEEDS_WRITE"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <permission android:name="com.google.android.calendar.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.google.android.calendar.permission.C2D_MESSAGE"/>
+    <application android:allowBackup="true" android:backupAgent="com.android.calendar.CalendarBackupAgent" android:hardwareAccelerated="true" android:icon="@mipmap/ic_launcher_calendar" android:label="@string/app_label" android:name="com.android.calendar.CalendarApplication" android:requiredAccountType="*" android:taskAffinity="google.android.task.calendar">
+        <meta-data android:name="com.google.android.backup.api_key" android:value="AEdPqrEAAAAIPz70fPFN-Vh8aLIBafEEbpyQlT1Tr5WXGoJ2Vw"/>
+        <activity android:exported="true" android:launchMode="singleTask" android:name="com.android.calendar.AllInOneActivity" android:theme="@style/CalendarTheme.WithActionBar" android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.APP_CALENDAR"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="time/epoch"/>
+                <data android:host="com.android.calendar"/>
+                <data android:scheme="content"/>
+            </intent-filter>
+        </activity>
+        <activity-alias android:exported="true" android:name="com.android.calendar.LaunchActivity" android:targetActivity="com.android.calendar.AllInOneActivity"/>
+        <activity android:name="com.android.calendar.EventInfoActivity" android:parentActivityName="com.android.calendar.AllInOneActivity" android:theme="@style/CalendarTheme.WithActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="vnd.android.cursor.item/event"/>
+            </intent-filter>
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.android.calendar.AllInOneActivity"/>
+        </activity>
+        <activity android:name="com.android.calendar.event.EditEventActivity" android:theme="@style/CalendarTheme.WithActionBar"/>
+        <activity-alias android:exported="true" android:name="com.android.calendar.EditEventActivity" android:targetActivity="com.android.calendar.event.EditEventActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT"/>
+                <action android:name="android.intent.action.INSERT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="vnd.android.cursor.item/event"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT"/>
+                <action android:name="android.intent.action.INSERT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="vnd.android.cursor.dir/event"/>
+            </intent-filter>
+        </activity-alias>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_label" android:name="com.android.calendar.GoogleCalendarUriIntentFilter" android:theme="@*android:style/Theme.NoDisplay">
+            <intent-filter android:priority="50">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="www.google.com" android:pathPrefix="/calendar/event" android:scheme="http"/>
+                <data android:host="www.google.com" android:pathPrefix="/calendar/event" android:scheme="https"/>
+                <data android:host="www.google.com" android:pathPattern="/calendar/hosted/.*/event" android:scheme="http"/>
+                <data android:host="www.google.com" android:pathPattern="/calendar/hosted/.*/event" android:scheme="https"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/select_visible_calendars_title" android:name="com.android.calendar.selectcalendars.SelectVisibleCalendarsActivity" android:theme="@*android:style/Theme.Holo.Light"/>
+        <activity android:label="@string/select_synced_calendars_title" android:name="com.android.calendar.selectcalendars.SelectSyncedCalendarsMultiAccountActivity" android:theme="@*android:style/Theme.Holo.Light"/>
+        <activity android:label="@string/preferences_title" android:name="com.android.calendar.CalendarSettingsActivity" android:theme="@*android:style/Theme.Holo.Light"/>
+        <meta-data android:name="android.app.default_searchable" android:value="com.android.calendar.SearchActivity"/>
+        <activity android:exported="true" android:label="@string/search_title" android:launchMode="singleTop" android:name="com.android.calendar.SearchActivity" android:theme="@style/CalendarTheme.WithActionBar" android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+        </activity>
+        <provider android:authorities="com.google.android.calendar.CalendarRecentSuggestionsProvider" android:exported="false" android:name="com.android.calendar.CalendarRecentSuggestionsProvider"/>
+        <activity android:excludeFromRecents="true" android:launchMode="singleInstance" android:name="com.android.calendar.alerts.AlertActivity" android:theme="@*android:style/Theme.Holo.Dialog"/>
+        <activity android:excludeFromRecents="true" android:label="@string/quick_response_dialog_title" android:launchMode="singleInstance" android:name="com.android.calendar.alerts.QuickResponseActivity" android:theme="@*android:style/Theme.Holo.Dialog"/>
+        <activity android:label="@string/menu_about_preferences" android:launchMode="singleInstance" android:name="com.google.android.calendar.extensions.AboutActivity" android:theme="@*android:style/Theme.Holo.Light"/>
+        <activity android:exported="false" android:label="@string/open_source_licenses_title" android:name="com.google.android.calendar.extensions.LicenseActivity" android:theme="@*android:style/Theme.Holo.Light"/>
+        <receiver android:name="com.android.calendar.alerts.AlertReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.EVENT_REMINDER"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <data android:scheme="content"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PROVIDER_CHANGED"/>
+                <data android:scheme="content"/>
+                <data android:host="com.android.calendar"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="true" android:name="com.google.android.calendar.alerts.GCMDismissReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <category android:name="com.google.android.calendar"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.android.calendar.alerts.GlobalDismissManager">
+            <intent-filter>
+                <action android:name="com.android.calendar.alerts.DISMISS"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="com.android.calendar.alerts.AlertService"/>
+        <service android:name="com.android.calendar.alerts.DismissAlarmsService"/>
+        <service android:name="com.android.calendar.alerts.SnoozeAlarmsService"/>
+        <service android:name="com.android.calendar.alerts.InitAlarmsService"/>
+        <receiver android:label="@string/gadget_title" android:name="com.android.calendar.widget.CalendarAppWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="com.google.android.calendar.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/appwidget_info"/>
+        </receiver>
+        <receiver android:name="com.android.calendar.widget.CalendarAppWidgetService$CalendarFactory">
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+                <action android:name="android.intent.action.DATE_CHANGED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PROVIDER_CHANGED"/>
+                <data android:scheme="content"/>
+                <data android:host="com.android.calendar"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.calendar.APPWIDGET_SCHEDULED_UPDATE"/>
+                <data android:scheme="content"/>
+                <data android:host="com.android.calendar"/>
+                <data android:mimeType="vnd.android.data/update"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="false" android:name="com.android.calendar.widget.CalendarAppWidgetService" android:permission="android.permission.BIND_REMOTEVIEWS"/>
+        <service android:name="com.android.calendar.AsyncQueryServiceHelper"/>
+        <service android:exported="true" android:name="com.google.android.syncadapters.calendar.CalendarSyncAdapterService">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter"/>
+            </intent-filter>
+            <meta-data android:name="android.content.SyncAdapter" android:resource="@xml/syncadapter"/>
+        </service>
+        <receiver android:name="com.google.android.syncadapters.calendar.CalendarSyncAdapterBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.accounts.LOGIN_ACCOUNTS_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="com.google.android.syncadapters.calendar.CalendarSyncAdapterIntentService"/>
+        <activity android:name="com.google.android.syncadapters.calendar.AuthNotificationActivity"/>
+    </application>
+</manifest>
