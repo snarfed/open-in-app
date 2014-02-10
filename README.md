@@ -13,8 +13,8 @@ To use, after you click on link, select Open Link in App from the chooser dialog
 box. If you don't see the dialog box on a link that you think should work, go to
 Settings => Apps => Browser or Chrome => Clear defaults.
 
-I'll add more apps and link types as I come across them. Feel free to ask for
-any specific ones you want. Enjoy!
+I'm not actively working on this right now, but if you're technical, it's pretty
+straightforward to add a new app, and I happily accept pull requests.
 
 
 License
