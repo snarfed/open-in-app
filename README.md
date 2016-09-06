@@ -16,11 +16,20 @@ Settings => Apps => Browser or Chrome => Clear defaults.
 I'm not actively working on this right now, but if you're technical, it's pretty
 straightforward to add a new app, and I happily accept pull requests.
 
+License: this project is placed in the public domain.
 
-License
+
+Related work
 ===
+[Tasomaniac](http://www.tasomaniac.com)'s
+[Open Link With...](https://play.google.com/store/apps/details?id=com.tasomaniac.openwith)
+is similar, but only works when you explicitly share a URL.
 
-This project is in the public domain.
+[Intrications](http://www.intrications.com)'s
+[Browser Intercept - Share URL](https://play.google.com/store/apps/details?id=com.intrications.android.sharebrowser)
+lets you share a text URL instead of opening it in a browser.
+
+And others...
 
 
 Development notes
