@@ -60,7 +60,7 @@ goodreads
 </intent-filter>
 
 
-calendar
+com.android.calendar
 ===
 <intent-filter android:priority="50">
     <action android:name="android.intent.action.VIEW"/>
@@ -71,6 +71,101 @@ calendar
     <data android:host="www.google.com" android:pathPattern="/calendar/hosted/.*/event" android:scheme="http"/>
     <data android:host="www.google.com" android:pathPattern="/calendar/hosted/.*/event" android:scheme="https"/>
 </intent-filter>
+
+
+com.google.android.calendar
+===
+<activity android:name="com.android.calendar.AllInOneActivity" ...
+		android:exported="true"
+<intent-filter>
+	<action android:name="android.intent.action.MAIN"></action>
+	<category android:name="android.intent.category.DEFAULT"></category>
+	<category android:name="android.intent.category.LAUNCHER"></category>
+	<category
+    android:name="android.intent.category.APP_CALENDAR"></category>
+</intent-filter>
+<intent-filter>
+	<action android:name="android.intent.action.VIEW"></action>
+	<category android:name="android.intent.category.DEFAULT"></category>
+	<data
+		android:mimeType="time/epoch"></data>
+	<data
+		android:host="com.android.calendar"></data>
+	<data
+		android:scheme="content"></data></intent-filter>
+</intent-filter>
+
+
+<activity android:theme="@7F0B0021"
+	android:name="com.android.calendar.EventInfoActivity"
+	android:parentActivityName="com.android.calendar.AllInOneActivity">
+<intent-filter>
+	<action android:name="android.intent.action.VIEW"></action>
+	<category android:name="android.intent.category.DEFAULT"></category>
+</intent-filter>
+<intent-filter>
+	<action android:name="android.intent.action.VIEW"></action>
+	<category android:name="android.intent.category.DEFAULT"></category>
+	<data
+		android:mimeType="vnd.android.cursor.item/event"></data>
+</intent-filter>
+
+
+<activity-alias
+	android:name="com.android.calendar.EditEventActivity"
+	android:exported="true"
+	android:targetActivity="com.android.calendar.event.EditEventActivity">
+<intent-filter>
+	<action android:name="android.intent.action.EDIT"></action>
+	<action android:name="android.intent.action.INSERT"></action>
+	<category android:name="android.intent.category.DEFAULT"></category>
+	<data
+		android:mimeType="vnd.android.cursor.item/event"></data>
+</intent-filter>
+<intent-filter>
+	<action android:name="android.intent.action.EDIT"></action>
+	<action android:name="android.intent.action.INSERT"></action>
+	<category android:name="android.intent.category.DEFAULT"></category>
+	<data
+		android:mimeType="vnd.android.cursor.dir/event"></data>
+</intent-filter>
+
+
+<activity
+	android:name="com.android.calendar.GoogleCalendarUriIntentFilter"
+	android:configChanges="0x000000A0">
+<intent-filter
+	android:priority="50">
+	<action android:name="android.intent.action.VIEW"></action>
+	<category android:name="android.intent.category.DEFAULT"></category>
+	<category android:name="android.intent.category.BROWSABLE"></category>
+	<data
+		android:scheme="http"
+		android:host="www.google.com"
+		android:pathPrefix="/calendar/event"></data>
+	<data
+		android:scheme="https"
+		android:host="www.google.com"
+		android:pathPrefix="/calendar/event"></data>
+	<data
+		android:scheme="http"
+		android:host="www.google.com"
+		android:pathPattern="/calendar/hosted/.*/event"></data>
+	<data
+		android:scheme="https"
+		android:host="www.google.com"
+		android:pathPattern="/calendar/hosted/.*/event"></data>
+</intent-filter>
+
+
+<activity android:name="com.android.calendar.SearchActivity"
+ 		  android:exported="true"
+<intent-filter>
+	<action android:name="android.intent.action.SEARCH"></action>
+</intent-filter>
+
+
+...and others that aren't the app (e.g. providers, receivers, widgets).
 
 
 hulu

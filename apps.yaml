@@ -184,5 +184,15 @@ apps:
   package: com.twitter.android
 
 
+- name: Google Calendar
+  # test url:
+  # http://www.google.com/calendar/event?action=TEMPLATE&text=Erik+and+Olivia%27s+birthday%21+&dates=20131027T170000Z%2F20131027T200000Z&details=http%3A%2F%2Fwww.paperlesspost.com%2Fevents%2F5003288-293faee4%2Freplies%2F94056898-6c367b58&sprop=website%3Awww.paperlesspost.com&location=Burton+Park%2C+900+Chestnut+St%2C+San+Carlos%2C+CA
+  # STATE: try sending it in intent. GoogleCalendarUriIntentFilter should handle.
+  hosts:
+    - www.google.com
+  package: com.google.android.calendar
+  prefixes:
+    - /calendar/event
+
 # - name: WordPress
 #   package: org.wordpress.android
