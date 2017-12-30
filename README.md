@@ -7,7 +7,7 @@ links and sends them to their native app.
 
 (See the
 [Play Store listing](https://play.google.com/store/apps/details?id=org.snarfed.android.openinapp)
-and [blog post announcement](http://snarfed.org/2013-07-16_open_link_in_app).)
+and [blog post announcement](http://snarfed.org/2013-07-16_open-link-in-app).)
 
 To use, after you click on link, select Open Link in App from the chooser dialog
 box. If you don't see the dialog box on a link that you think should work, go to
