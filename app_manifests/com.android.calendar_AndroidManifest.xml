@@ -24,7 +24,7 @@
     <permission android:name="com.google.android.calendar.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
     <uses-permission android:name="com.google.android.calendar.permission.C2D_MESSAGE"/>
     <application android:allowBackup="true" android:backupAgent="com.android.calendar.CalendarBackupAgent" android:hardwareAccelerated="true" android:icon="@mipmap/ic_launcher_calendar" android:label="@string/app_label" android:name="com.android.calendar.CalendarApplication" android:requiredAccountType="*" android:taskAffinity="google.android.task.calendar">
-        <meta-data android:name="com.google.android.backup.api_key" android:value="AEdPqrEAAAAIPz70fPFN-Vh8aLIBafEEbpyQlT1Tr5WXGoJ2Vw"/>
+        <meta-data android:name="com.google.android.backup.api_key" android:value="..."/>
         <activity android:exported="true" android:launchMode="singleTask" android:name="com.android.calendar.AllInOneActivity" android:theme="@style/CalendarTheme.WithActionBar" android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

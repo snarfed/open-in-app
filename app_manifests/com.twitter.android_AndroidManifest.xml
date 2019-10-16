@@ -285,8 +285,8 @@
         <service android:name="com.twitter.library.scribe.ScribeService" />
         <service android:name="com.twitter.library.service.AuthTokenService" />
         <service android:name="com.twitter.android.client.AppService" />
-        <meta-data android:name="com.crashlytics.ApiKey" android:value="060629362bf0d9735460c4bcca7d789bf25ca35d" />
+        <meta-data android:name="com.crashlytics.ApiKey" android:value="..." />
         <activity android:theme="@style/Theme.Settings" android:label="@string/settings" android:name="com.twitter.android.SettingsActivity" android:excludeFromRecents="true" />
-        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyD7-F5Z2aAr0LPRWeFdSFE7avidzD_Eapw" />
+        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="..." />
     </application>
 </manifest>

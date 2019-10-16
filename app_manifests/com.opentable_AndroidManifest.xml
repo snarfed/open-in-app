@@ -17,12 +17,12 @@
         <meta-data android:name="ADMOB_PUBLISHER_ID" android:value="a14c51ef531f2b6" />
         <meta-data android:name="OMNITURE_SUITE_ID" android:value="otandroid" />
         <meta-data android:name="OMNITURE_TRACKING_SERVER" android:value="so.opentable.com" />
-        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCi4W41hpIxmJfQ_gAcUKXhWEMAh5A50jY" />
-        <meta-data android:name="com.crashlytics.ApiKey" android:value="b8e2b4d00e468c72edf1de02461420632e70873e" />
+        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="..." />
+        <meta-data android:name="com.crashlytics.ApiKey" android:value="..." />
         <meta-data android:name="debug" android:value="false" />
         <meta-data android:name="app_rating_url" android:value="market://details?id=com.opentable" />
         <meta-data android:name="HASOFFERS_AD_ID" android:value="5490" />
-        <meta-data android:name="HASOFFERS_KEY" android:value="99db188acba9fc2dd652b04ead125b81" />
+        <meta-data android:name="HASOFFERS_KEY" android:value="..." />
         <receiver android:name="com.opentable.helpers.InstallReferrerReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER" />

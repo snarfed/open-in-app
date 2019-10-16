@@ -121,7 +121,7 @@
 		>
 		<meta-data
 			android:name="com.google.android.backup.api_key"
-			android:value="AEdPqrEAAAAIPz70fPFN-Vh8aLIBafEEbpyQlT1Tr5WXGoJ2Vw"
+			android:value="..."
 			>
 		</meta-data>
 		<activity
